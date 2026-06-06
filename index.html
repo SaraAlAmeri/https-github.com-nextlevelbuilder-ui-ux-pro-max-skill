@@ -1,0 +1,1933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emergency Cookies — Abu Dhabi's Frozen Cookie Dough</title>
+  <meta name="description" content="Premium frozen cookie dough, handcrafted in Abu Dhabi. Delivered frozen across UAE. Bake fresh at home in 12 minutes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Inter:wght@300;400;500;600&family=Amatic+SC:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #F5EDD8;
+      --cream-light: #FBF6EC;
+      --brown: #8B6234;
+      --brown-dark: #6B4A24;
+      --brown-deep: #3D2810;
+      --lemon: #F5F0C0;
+      --lemon-dark: #B5960A;
+      --choc-dark-bg: #2C1A0E;
+      --choc-dark-text: #E8D5C0;
+      --white-choc-bg: #FAF5EC;
+      --text-main: #3D2810;
+      --text-muted: #7A5C3A;
+      --radius: 16px;
+      --shadow: 0 4px 24px rgba(61,40,16,0.12);
+      --shadow-hover: 0 12px 40px rgba(61,40,16,0.22);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--cream-light);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(245,237,216,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(139,98,52,0.15);
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 1.25rem;
+      color: var(--brown);
+      letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      display: block;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-top: -2px;
+    }
+
+    .nav-right { display: flex; align-items: center; gap: 24px; }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 200ms;
+    }
+    .nav-link:hover { color: var(--brown); }
+
+    .cart-btn {
+      position: relative;
+      background: var(--brown);
+      border: none;
+      border-radius: 50px;
+      padding: 8px 18px 8px 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: background 200ms, transform 150ms;
+    }
+    .cart-btn:hover { background: var(--brown-dark); transform: translateY(-1px); }
+
+    .cart-count {
+      background: #F5C842;
+      color: var(--brown-deep);
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      display: none;
+    }
+    .cart-count.visible { display: flex; }
+
+    /* ── ALLERGEN BANNER ── */
+    .allergen-banner {
+      background: var(--brown-deep);
+      color: var(--cream);
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      font-weight: 500;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--cream);
+      min-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    /* Decorative dots */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle, rgba(139,98,52,0.08) 2px, transparent 2px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+
+    /* Brand Logo Mark */
+    .brand-logo-mark {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 32px;
+    }
+
+    .brand-arc {
+      font-family: 'Amatic SC', cursive;
+      font-weight: 700;
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      color: var(--brown);
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: -8px;
+    }
+
+    .brand-main {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(4rem, 14vw, 9rem);
+      color: var(--brown);
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      display: block;
+    }
+
+    .brand-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .brand-divider-line {
+      flex: 1;
+      max-width: 120px;
+      height: 2px;
+      background: var(--brown);
+      border-radius: 2px;
+    }
+
+    .brand-cookie-icon {
+      color: var(--brown);
+      flex-shrink: 0;
+    }
+
+    .brand-meta {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 0 8px;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      color: var(--brown);
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    .hero-tagline {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      max-width: 480px;
+    }
+
+    .hero-sub {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-sub strong { color: var(--brown); }
+
+    .btn-primary {
+      background: var(--brown);
+      color: var(--cream);
+      border: none;
+      border-radius: 50px;
+      padding: 16px 40px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 200ms, transform 150ms, box-shadow 200ms;
+      box-shadow: 0 4px 16px rgba(139,98,52,0.3);
+    }
+    .btn-primary:hover {
+      background: var(--brown-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(139,98,52,0.4);
+    }
+
+    .hero-free-delivery {
+      margin-top: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(139,98,52,0.1);
+      border: 1px solid rgba(139,98,52,0.2);
+      border-radius: 50px;
+      padding: 8px 20px;
+      font-size: 0.82rem;
+      color: var(--brown-dark);
+      font-weight: 500;
+    }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 80px 24px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--brown);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--text-main);
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+    .section-desc {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 540px;
+      line-height: 1.7;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how-section { background: var(--brown-deep); }
+    .how-section .section-label { color: #C9A87A; }
+    .how-section .section-title { color: var(--cream); }
+    .how-section .section-desc { color: #C9A87A; }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 32px;
+      margin-top: 52px;
+    }
+
+    .step-card {
+      text-align: center;
+      padding: 36px 24px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(201,168,122,0.2);
+      position: relative;
+    }
+
+    .step-number {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--brown);
+      color: var(--cream);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .step-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(139,98,52,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: #C9A87A;
+    }
+
+    .step-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
+
+    .step-desc { font-size: 0.875rem; color: #C9A87A; line-height: 1.6; }
+
+    /* ── PRODUCTS ── */
+    .products-section { background: var(--cream-light); }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 28px;
+      margin-top: 52px;
+    }
+
+    .product-card {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 250ms ease, box-shadow 250ms ease;
+      cursor: default;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .card-visual {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* OG card */
+    .card-og .card-visual { background: linear-gradient(135deg, #C8894A 0%, #8B5E2E 100%); }
+    .card-og { background: #FFF8F0; }
+
+    /* Macadamia card */
+    .card-mac .card-visual { background: linear-gradient(135deg, #F5EDD8 0%, #DDD0B5 100%); }
+    .card-mac { background: #FDFAF5; }
+
+    /* Brownie card */
+    .card-brownie .card-visual { background: linear-gradient(135deg, #3D2010 0%, #1E0E05 100%); }
+    .card-brownie { background: #F5EDE5; }
+
+    /* Lemon card */
+    .card-lemon .card-visual { background: linear-gradient(135deg, #F9F2A0 0%, #E8D840 100%); }
+    .card-lemon { background: #FDFDE8; }
+
+    .card-visual-art {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+    }
+
+    /* Cookie SVG illustration placeholders */
+    .cookie-illustration {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 50px;
+      padding: 4px 12px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .card-og .card-badge { color: #8B5E2E; }
+    .card-mac .card-badge { color: #6B4A24; }
+    .card-brownie .card-badge { color: #2C1A0E; }
+    .card-lemon .card-badge { color: #7A6A00; }
+
+    .card-body { padding: 22px 22px 24px; flex: 1; display: flex; flex-direction: column; }
+
+    .card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+      color: var(--text-main);
+    }
+
+    .card-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+
+    .card-allergen {
+      font-size: 0.72rem;
+      color: #9A7A5A;
+      margin-bottom: 14px;
+      font-style: italic;
+    }
+
+    .card-type-toggle {
+      display: flex;
+      border-radius: 50px;
+      overflow: hidden;
+      border: 1.5px solid rgba(139,98,52,0.25);
+      margin-bottom: 16px;
+    }
+
+    .toggle-btn {
+      flex: 1;
+      padding: 8px 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: background 180ms, color 180ms;
+      font-family: 'Inter', sans-serif;
+      text-align: center;
+    }
+    .toggle-btn.active {
+      background: var(--brown);
+      color: var(--cream);
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .card-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--brown);
+    }
+
+    .card-price span {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .qty-control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .qty-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(139,98,52,0.3);
+      background: transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brown);
+      font-size: 1rem;
+      font-weight: 600;
+      transition: background 150ms;
+    }
+    .qty-btn:hover { background: rgba(139,98,52,0.1); }
+
+    .qty-display {
+      font-weight: 600;
+      font-size: 0.95rem;
+      min-width: 18px;
+      text-align: center;
+    }
+
+    .add-to-cart-btn {
+      width: 100%;
+      margin-top: 14px;
+      padding: 12px;
+      background: var(--brown);
+      color: var(--cream);
+      border: none;
+      border-radius: 50px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 200ms, transform 150ms;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .add-to-cart-btn:hover {
+      background: var(--brown-dark);
+      transform: translateY(-1px);
+    }
+    .add-to-cart-btn:active { transform: scale(0.98); }
+
+    @keyframes pulse-once {
+      0% { transform: scale(1); }
+      40% { transform: scale(1.04); }
+      100% { transform: scale(1); }
+    }
+    .add-to-cart-btn.pulsed { animation: pulse-once 300ms ease; }
+
+    /* ── STORY ── */
+    .story-section { background: var(--cream); }
+    .story-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .story-visual {
+      border-radius: 24px;
+      background: linear-gradient(135deg, #C8894A, #8B5E2E);
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .story-visual-inner {
+      text-align: center;
+      color: var(--cream);
+    }
+
+    .story-visual-inner h3 {
+      font-size: 2rem;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .story-visual-inner p {
+      font-size: 0.875rem;
+      opacity: 0.8;
+      letter-spacing: 0.1em;
+    }
+
+    .story-text { }
+
+    .story-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-style: italic;
+      color: var(--text-main);
+      line-height: 1.4;
+      margin-bottom: 24px;
+    }
+
+    .story-body {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .story-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 32px;
+    }
+
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--brown);
+      display: block;
+    }
+    .stat-label { font-size: 0.78rem; color: var(--text-muted); letter-spacing: 0.08em; }
+
+    /* ── FAQ ── */
+    .faq-section { background: var(--cream-light); }
+    .faq-list { margin-top: 48px; max-width: 720px; }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(139,98,52,0.15);
+      padding: 0;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      padding: 22px 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: var(--text-main);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      font-weight: 700;
+    }
+
+    .faq-chevron {
+      color: var(--brown);
+      flex-shrink: 0;
+      transition: transform 250ms;
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+
+    .faq-answer {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 350ms ease, padding 350ms ease;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 400px;
+      padding-bottom: 20px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--brown-deep);
+      color: var(--cream);
+      padding: 56px 24px 32px;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(245,237,216,0.1);
+    }
+
+    .footer-brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--cream);
+      margin-bottom: 6px;
+    }
+
+    .footer-tagline {
+      font-size: 0.82rem;
+      color: rgba(245,237,216,0.6);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .footer-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(245,237,216,0.7);
+      font-size: 0.85rem;
+      margin-bottom: 10px;
+      text-decoration: none;
+    }
+    .footer-contact-item:hover { color: var(--cream); }
+
+    .footer-col-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 20px;
+    }
+
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a {
+      color: rgba(245,237,216,0.65);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 180ms;
+    }
+    .footer-links a:hover { color: var(--cream); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 28px auto 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: rgba(245,237,216,0.4);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* ── CART DRAWER ── */
+    .cart-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(61,40,16,0.4);
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 300ms;
+      backdrop-filter: blur(2px);
+    }
+    .cart-overlay.open { opacity: 1; pointer-events: all; }
+
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      max-width: 420px;
+      background: var(--cream-light);
+      z-index: 101;
+      transform: translateX(100%);
+      transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      box-shadow: -8px 0 40px rgba(61,40,16,0.2);
+    }
+    .cart-drawer.open { transform: translateX(0); }
+
+    .cart-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      border-bottom: 1px solid rgba(139,98,52,0.15);
+    }
+
+    .cart-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .cart-close-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(139,98,52,0.2);
+      background: transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brown);
+      transition: background 150ms;
+    }
+    .cart-close-btn:hover { background: rgba(139,98,52,0.1); }
+
+    .cart-items { flex: 1; overflow-y: auto; padding: 16px 24px; }
+
+    .cart-empty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 200px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+    .cart-empty svg { margin-bottom: 16px; opacity: 0.4; }
+    .cart-empty p { font-size: 0.9rem; }
+
+    .cart-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(139,98,52,0.1);
+    }
+
+    .cart-item-color {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+
+    .cart-item-info { flex: 1; }
+
+    .cart-item-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text-main);
+      margin-bottom: 2px;
+    }
+
+    .cart-item-type {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .cart-item-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cart-qty-btn {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 1px solid rgba(139,98,52,0.25);
+      background: transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brown);
+      font-size: 0.9rem;
+      transition: background 150ms;
+    }
+    .cart-qty-btn:hover { background: rgba(139,98,52,0.1); }
+
+    .cart-item-qty { font-size: 0.875rem; font-weight: 600; min-width: 16px; text-align: center; }
+    .cart-item-price { font-weight: 700; font-size: 0.9rem; color: var(--brown); }
+
+    .cart-remove-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: rgba(139,98,52,0.4);
+      padding: 4px;
+      transition: color 150ms;
+    }
+    .cart-remove-btn:hover { color: #C0392B; }
+
+    .cart-footer {
+      padding: 20px 24px;
+      border-top: 1px solid rgba(139,98,52,0.15);
+      background: var(--cream);
+    }
+
+    .cart-subtotal-row, .cart-shipping-row, .cart-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .cart-shipping-row.free { color: #2A7A4A; }
+
+    .cart-total-row {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+      border-top: 1px solid rgba(139,98,52,0.15);
+      padding-top: 10px;
+      margin-top: 4px;
+    }
+
+    .cart-free-delivery-notice {
+      background: #E8F5EE;
+      border: 1px solid #A8D5B8;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.78rem;
+      color: #2A7A4A;
+      margin-bottom: 16px;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .checkout-btn {
+      width: 100%;
+      padding: 16px;
+      background: var(--brown);
+      color: var(--cream);
+      border: none;
+      border-radius: 50px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 200ms, transform 150ms;
+      margin-top: 16px;
+    }
+    .checkout-btn:hover { background: var(--brown-dark); transform: translateY(-1px); }
+    .checkout-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    /* ── CHECKOUT MODAL ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(61,40,16,0.5);
+      z-index: 200;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 24px 16px;
+      overflow-y: auto;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 300ms;
+      backdrop-filter: blur(4px);
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+    .modal {
+      background: var(--cream-light);
+      border-radius: 24px;
+      width: 100%;
+      max-width: 560px;
+      padding: 36px;
+      box-shadow: 0 24px 80px rgba(61,40,16,0.3);
+      transform: translateY(20px);
+      transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+    .modal-overlay.open .modal { transform: translateY(0); }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(139,98,52,0.2);
+      background: transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brown);
+    }
+
+    .modal-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+      color: var(--text-main);
+    }
+
+    .modal-subtitle { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 28px; }
+
+    .form-group { margin-bottom: 18px; }
+
+    .form-label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-main);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid rgba(139,98,52,0.2);
+      border-radius: 10px;
+      background: white;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-main);
+      transition: border-color 200ms, box-shadow 200ms;
+      outline: none;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--brown);
+      box-shadow: 0 0 0 3px rgba(139,98,52,0.12);
+    }
+
+    .form-textarea { resize: vertical; min-height: 80px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .payment-notice {
+      background: rgba(139,98,52,0.08);
+      border: 1px solid rgba(139,98,52,0.2);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .payment-notice-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--brown);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cream);
+      flex-shrink: 0;
+    }
+
+    .payment-notice-text p:first-child {
+      font-weight: 600;
+      font-size: 0.875rem;
+      color: var(--text-main);
+      margin-bottom: 2px;
+    }
+
+    .payment-notice-text p:last-child { font-size: 0.8rem; color: var(--text-muted); }
+
+    .modal-order-summary {
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(139,98,52,0.12);
+    }
+
+    .summary-title { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; }
+    .summary-row { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 8px; color: var(--text-main); }
+    .summary-total { font-weight: 700; font-size: 0.95rem; border-top: 1px solid rgba(139,98,52,0.12); padding-top: 10px; margin-top: 6px; }
+
+    .submit-order-btn {
+      width: 100%;
+      padding: 18px;
+      background: var(--brown);
+      color: var(--cream);
+      border: none;
+      border-radius: 50px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 200ms, transform 150ms;
+    }
+    .submit-order-btn:hover { background: var(--brown-dark); transform: translateY(-1px); }
+
+    /* ── CONFIRMATION ── */
+    .confirmation-view { display: none; text-align: center; padding: 20px 0; }
+    .confirmation-view.visible { display: block; }
+    .checkout-form-view { }
+    .checkout-form-view.hidden { display: none; }
+
+    .confirm-icon {
+      width: 80px;
+      height: 80px;
+      background: #E8F5EE;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      color: #2A7A4A;
+    }
+
+    .confirm-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 10px;
+    }
+
+    .confirm-message { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 28px; }
+
+    .confirm-order-box {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      text-align: left;
+      margin-bottom: 24px;
+      border: 1px solid rgba(139,98,52,0.12);
+    }
+
+    .confirm-order-box .summary-title { color: var(--brown); }
+
+    .confirm-close-btn {
+      display: inline-block;
+      padding: 14px 36px;
+      background: var(--brown);
+      color: var(--cream);
+      border: none;
+      border-radius: 50px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 200ms;
+    }
+    .confirm-close-btn:hover { background: var(--brown-dark); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .story-inner { grid-template-columns: 1fr; gap: 36px; }
+      .story-visual { height: 240px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+      .form-row { grid-template-columns: 1fr; }
+      nav { padding: 0 16px; }
+      .nav-right .nav-link { display: none; }
+      section { padding: 56px 16px; }
+      .modal { padding: 24px 20px; border-radius: 16px; }
+    }
+
+    @media (max-width: 480px) {
+      .brand-main { font-size: clamp(3.5rem, 18vw, 5rem); }
+      .products-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ALLERGEN BANNER -->
+<div class="allergen-banner" role="alert">
+  Contains: Gluten, Eggs, Dairy &nbsp;|&nbsp; Macadamia flavour contains Tree Nuts &nbsp;|&nbsp; Made in a home kitchen in Abu Dhabi, UAE
+</div>
+
+<!-- NAV -->
+<nav role="navigation" aria-label="Main navigation">
+  <a href="#" class="nav-logo" aria-label="Emergency Cookies home">
+    Emergency Cookies
+    <span>Abu Dhabi, UAE</span>
+  </a>
+  <div class="nav-right">
+    <a href="#cookies" class="nav-link">Our Cookies</a>
+    <a href="#story" class="nav-link">Our Story</a>
+    <a href="#faq" class="nav-link">FAQ</a>
+    <button class="cart-btn" onclick="openCart()" aria-label="Open cart">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
+      </svg>
+      Cart
+      <span class="cart-count" id="cartCount" aria-live="polite">0</span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" aria-label="Hero">
+  <div class="brand-logo-mark" role="img" aria-label="Emergency Cookies logo">
+    <span class="brand-arc">Emergency</span>
+    <span class="brand-main">Cookies</span>
+    <div class="brand-divider">
+      <div class="brand-divider-line"></div>
+      <svg class="brand-cookie-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+        <circle cx="18" cy="18" r="16" stroke="#8B6234" stroke-width="2"/>
+        <circle cx="13" cy="14" r="2" fill="#8B6234"/>
+        <circle cx="20" cy="12" r="1.5" fill="#8B6234"/>
+        <circle cx="22" cy="21" r="2" fill="#8B6234"/>
+        <circle cx="14" cy="22" r="1.5" fill="#8B6234"/>
+        <circle cx="18" cy="17" r="1.5" fill="#8B6234"/>
+        <path d="M22 8 Q24 6 26 8" stroke="#8B6234" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div class="brand-divider-line"></div>
+    </div>
+    <div class="brand-meta">
+      <span>EST.</span>
+      <span>2024</span>
+    </div>
+  </div>
+
+  <p class="hero-tagline">Freshly made. Frozen to perfection. Baked by you.</p>
+  <p class="hero-sub">Handcrafted in <strong>Abu Dhabi</strong> · Delivered frozen across <strong>all UAE</strong> · Ready in 12 minutes</p>
+  <a href="#cookies" class="btn-primary">Order Now</a>
+  <div class="hero-free-delivery">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+      <path d="M5 12h14M12 5l7 7-7 7"/>
+    </svg>
+    Free delivery on orders over 120 AED
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" aria-labelledby="how-title">
+  <div class="section-inner">
+    <p class="section-label">Simple &amp; Delicious</p>
+    <h2 class="section-title" id="how-title">From Our Kitchen to Yours</h2>
+    <p class="section-desc">No baking skill required. Just an oven, a baking sheet, and 12 minutes of patience.</p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <div class="step-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="M9 12h6M9 16h4"/>
+          </svg>
+        </div>
+        <h3 class="step-title">Choose Your Dough</h3>
+        <p class="step-desc">Pick your flavour, quantity, and whether you want raw frozen dough or pre-baked cookies. Add to cart and check out.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <div class="step-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+          </svg>
+        </div>
+        <h3 class="step-title">We Deliver Frozen</h3>
+        <p class="step-desc">Your order ships frozen across UAE. We'll contact you within 2 hours to confirm delivery timing. Cash on delivery.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <div class="step-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
+          </svg>
+        </div>
+        <h3 class="step-title">You Bake &amp; Enjoy</h3>
+        <p class="step-desc">Preheat to 180°C, bake 12-14 mins. That's it. Crispy edges, gooey centre, fresh from your own oven.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products-section" id="cookies" aria-labelledby="products-title">
+  <div class="section-inner">
+    <p class="section-label">The Menu</p>
+    <h2 class="section-title" id="products-title">Our Cookies</h2>
+    <p class="section-desc">12 cookies per pack · 400g · Choose frozen dough or baked &amp; frozen · Shipping +20 AED (free over 120 AED)</p>
+
+    <div class="products-grid" id="productsGrid">
+      <!-- Cards injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story-section" id="story" aria-labelledby="story-title">
+  <div class="story-inner">
+    <div class="story-visual" aria-hidden="true">
+      <div class="story-visual-inner">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" style="margin-bottom:16px">
+          <circle cx="40" cy="40" r="38" fill="rgba(245,237,216,0.15)" stroke="rgba(245,237,216,0.4)" stroke-width="2"/>
+          <circle cx="30" cy="32" r="6" fill="rgba(245,237,216,0.8)"/>
+          <circle cx="46" cy="28" r="4.5" fill="rgba(245,237,216,0.7)"/>
+          <circle cx="52" cy="44" r="6" fill="rgba(245,237,216,0.8)"/>
+          <circle cx="34" cy="52" r="4.5" fill="rgba(245,237,216,0.7)"/>
+          <circle cx="42" cy="42" r="4" fill="rgba(245,237,216,0.6)"/>
+        </svg>
+        <h3>Made with love</h3>
+        <p>Abu Dhabi, 2024</p>
+      </div>
+    </div>
+    <div class="story-text">
+      <p class="section-label">Our Story</p>
+      <h2 class="section-title" id="story-title">Born in an Abu Dhabi Kitchen</h2>
+      <p class="story-quote">"Real butter. Real chocolate. Real love. No shortcuts."</p>
+      <p class="story-body">
+        Emergency Cookies started in 2024 with a simple obsession: the perfect cookie. Not the kind from a factory. The kind that fills your home with that warm, buttery smell and comes out of the oven with crispy edges and a gooey, chocolate-pooled centre.
+      </p>
+      <p class="story-body">
+        We make every batch by hand in Abu Dhabi, freeze them at their peak, and deliver them to your door across all UAE. All you need to do is bake. 12 minutes and you're done. That's the emergency plan.
+      </p>
+      <div class="story-stats">
+        <div class="stat">
+          <span class="stat-num">4</span>
+          <span class="stat-label">Flavours</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">12</span>
+          <span class="stat-label">Per Pack</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">7</span>
+          <span class="stat-label">Emirates</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">12m</span>
+          <span class="stat-label">To Bake</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq" aria-labelledby="faq-title">
+  <div class="section-inner">
+    <p class="section-label">Got Questions?</p>
+    <h2 class="section-title" id="faq-title">Frequently Asked</h2>
+    <div class="faq-list" id="faqList">
+      <!-- FAQ items injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand-name">Emergency Cookies</div>
+      <p class="footer-tagline">Handcrafted frozen cookie dough, delivered across UAE.<br/>Bake fresh. Eat happy. No emergencies required.</p>
+      <a href="mailto:hello@emergencycookies.ae" class="footer-contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        hello@emergencycookies.ae
+      </a>
+      <a href="https://wa.me/971XXXXXXXXX" class="footer-contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp (coming soon)
+      </a>
+    </div>
+    <div>
+      <p class="footer-col-title">Quick Links</p>
+      <ul class="footer-links">
+        <li><a href="#cookies">Our Cookies</a></li>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Delivery</p>
+      <ul class="footer-links">
+        <li><a href="#faq">Abu Dhabi</a></li>
+        <li><a href="#faq">Dubai</a></li>
+        <li><a href="#faq">All UAE Emirates</a></li>
+        <li><a href="#faq">Free over 120 AED</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 Emergency Cookies. All rights reserved. Abu Dhabi, UAE.</span>
+    <span>Handmade with real butter &amp; real love.</span>
+  </div>
+</footer>
+
+<!-- CART OVERLAY + DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()" aria-hidden="true"></div>
+<div class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Shopping cart">
+  <div class="cart-header">
+    <h2 class="cart-title">Your Order</h2>
+    <button class="cart-close-btn" onclick="closeCart()" aria-label="Close cart">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="cart-items" id="cartItems" aria-live="polite"></div>
+  <div class="cart-footer" id="cartFooter" style="display:none;">
+    <div id="freeDeliveryNotice" class="cart-free-delivery-notice" style="display:none;"></div>
+    <div class="cart-subtotal-row">
+      <span>Subtotal</span>
+      <span id="cartSubtotal">0 AED</span>
+    </div>
+    <div class="cart-shipping-row" id="shippingRow">
+      <span>Delivery</span>
+      <span id="shippingAmount">+20 AED</span>
+    </div>
+    <div class="cart-total-row">
+      <span>Total</span>
+      <span id="cartTotal">0 AED</span>
+    </div>
+    <button class="checkout-btn" onclick="openCheckout()">Proceed to Checkout</button>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="checkoutModal" role="dialog" aria-modal="true" aria-label="Checkout">
+  <div class="modal">
+    <button class="modal-close" onclick="closeCheckout()" aria-label="Close checkout">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <!-- Checkout Form -->
+    <div class="checkout-form-view" id="checkoutFormView">
+      <h2 class="modal-title">Checkout</h2>
+      <p class="modal-subtitle">Fill in your details and we'll confirm your order within 2 hours.</p>
+
+      <div class="modal-order-summary" id="modalOrderSummary"></div>
+
+      <form id="checkoutForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="custName">Full Name *</label>
+            <input class="form-input" type="text" id="custName" placeholder="Sara Al Ameri" required autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="custPhone">Phone (UAE) *</label>
+            <input class="form-input" type="tel" id="custPhone" placeholder="+971 50 000 0000" required autocomplete="tel" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="custEmail">Email *</label>
+          <input class="form-input" type="email" id="custEmail" placeholder="you@example.com" required autocomplete="email" />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="custEmirate">Emirate *</label>
+            <select class="form-select" id="custEmirate" required>
+              <option value="">Select emirate…</option>
+              <option>Abu Dhabi</option>
+              <option>Dubai</option>
+              <option>Sharjah</option>
+              <option>Ajman</option>
+              <option>Ras Al Khaimah</option>
+              <option>Fujairah</option>
+              <option>Umm Al Quwain</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="custArea">Area / Neighbourhood *</label>
+            <input class="form-input" type="text" id="custArea" placeholder="e.g. Khalidiyah" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="custAddress">Full Delivery Address *</label>
+          <textarea class="form-textarea" id="custAddress" placeholder="Building, Villa, Floor, Street…" required></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="custNotes">Order Notes (optional)</label>
+          <input class="form-input" type="text" id="custNotes" placeholder="Any special requests?" />
+        </div>
+
+        <div class="payment-notice">
+          <div class="payment-notice-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          </div>
+          <div class="payment-notice-text">
+            <p>Cash on Delivery</p>
+            <p>Payment is collected upon delivery. No card required. We'll call or message you to confirm the order and delivery time.</p>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-order-btn">Place My Order</button>
+      </form>
+    </div>
+
+    <!-- Confirmation View -->
+    <div class="confirmation-view" id="confirmationView">
+      <div class="confirm-icon" aria-hidden="true">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+      <h2 class="confirm-title">Order Placed!</h2>
+      <p class="confirm-message">
+        Your Emergency Cookies are on their way — almost. We'll reach out within <strong>2 hours</strong> to confirm your order and arrange delivery. Keep your phone handy!
+      </p>
+      <div class="confirm-order-box" id="confirmOrderBox"></div>
+      <button class="confirm-close-btn" onclick="closeCheckoutAndReset()">Back to Cookies</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ── DATA ──
+  const products = [
+    {
+      id: 'og',
+      name: 'The OG',
+      subtitle: 'Semi-Sweet Chocolate Chip',
+      price: 40,
+      desc: 'Our original. Loaded with semi-sweet chocolate chunks, crispy edges, gooey centre. The one that started it all.',
+      allergens: 'Contains: Gluten, Eggs, Dairy',
+      cardClass: 'card-og',
+      badgeText: 'BEST SELLER',
+      visualColor: '#C8894A',
+      dotColor: '#6B3A1F',
+    },
+    {
+      id: 'mac',
+      name: 'White Choc Macadamia',
+      subtitle: 'White Chocolate & Macadamia Nut',
+      price: 55,
+      desc: 'Buttery dough packed with creamy white chocolate chips and crunchy macadamia nuts. A UAE favourite.',
+      allergens: 'Contains: Gluten, Eggs, Dairy, Tree Nuts',
+      cardClass: 'card-mac',
+      badgeText: 'PREMIUM',
+      visualColor: '#DDD0B5',
+      dotColor: '#8B6234',
+    },
+    {
+      id: 'brownie',
+      name: 'Chocolate Brownie',
+      subtitle: 'Deep Dark Fudge',
+      price: 45,
+      desc: 'Deep, fudgy brownie-style dough with rich chocolate throughout. For the serious chocolate lover.',
+      allergens: 'Contains: Gluten, Eggs, Dairy',
+      cardClass: 'card-brownie',
+      badgeText: 'INTENSE',
+      visualColor: '#3D2010',
+      dotColor: '#E8D5C0',
+    },
+    {
+      id: 'lemon',
+      name: 'Lemon White Choc',
+      subtitle: 'Lemon Zest & White Chocolate',
+      price: 50,
+      desc: 'Bright lemon zest meets sweet white chocolate in a soft, sunshine-y cookie. Refreshing and unique.',
+      allergens: 'Contains: Gluten, Eggs, Dairy',
+      cardClass: 'card-lemon',
+      badgeText: 'NEW',
+      visualColor: '#E8D840',
+      dotColor: '#7A6A00',
+    },
+  ];
+
+  const faqs = [
+    {
+      q: 'How long can I keep the cookie dough frozen?',
+      a: 'Frozen raw dough keeps for up to 3 months in the freezer. Baked frozen cookies keep for up to 1 month. Once thawed, consume within 3 days and do not refreeze.',
+    },
+    {
+      q: 'How do I bake the frozen dough?',
+      a: 'Preheat your oven to 180°C (fan-forced). Line a baking sheet with parchment paper and place frozen dough balls 5cm apart. Bake for 12–14 minutes until the edges are golden and the centre looks slightly underdone. Let them rest on the tray for 5 minutes — they firm up as they cool. Do not overbake!',
+    },
+    {
+      q: 'Do you deliver to my emirate?',
+      a: 'Yes! We deliver across all UAE: Abu Dhabi, Dubai, Sharjah, Ajman, Ras Al Khaimah, Fujairah, and Umm Al Quwain. Delivery is 20 AED flat. Orders over 120 AED get FREE delivery.',
+    },
+    {
+      q: 'What are the allergens in your cookies?',
+      a: 'All our cookies contain Gluten (wheat flour), Eggs, and Dairy (butter). Our White Chocolate Macadamia flavour also contains Tree Nuts (macadamia). All cookies are made in a home kitchen that handles these allergens. Not suitable for those with severe nut allergies.',
+    },
+    {
+      q: 'What is the difference between "Frozen Dough" and "Baked & Frozen"?',
+      a: '"Frozen Dough" are raw, pre-portioned cookie dough balls that you bake at home. "Baked & Frozen" are fully baked cookies that we freeze at their peak — you can warm them in the oven at 160°C for 5 minutes or enjoy them at room temperature. Both options are the same price.',
+    },
+    {
+      q: 'How long does it take to receive my order?',
+      a: 'After you place your order, we\'ll contact you within 2 hours to confirm and arrange delivery. Typical delivery window is 24–48 hours depending on your emirate. We\'ll always confirm exact timing with you before shipping.',
+    },
+  ];
+
+  // ── CART STATE ──
+  let cart = [];
+
+  // ── PRODUCT CARD QTY STATE ──
+  const cardQty = {};
+  const cardType = {};
+  products.forEach(p => { cardQty[p.id] = 1; cardType[p.id] = 'frozen'; });
+
+  // ── RENDER PRODUCTS ──
+  function renderProducts() {
+    const grid = document.getElementById('productsGrid');
+    grid.innerHTML = products.map(p => `
+      <article class="product-card ${p.cardClass}" aria-label="${p.name} cookie pack">
+        <div class="card-visual">
+          <svg width="110" height="110" viewBox="0 0 110 110" aria-hidden="true">
+            <circle cx="55" cy="55" r="52" fill="${p.visualColor}" opacity="0.7"/>
+            <circle cx="55" cy="55" r="44" fill="${p.visualColor}"/>
+            <circle cx="40" cy="46" r="7" fill="${p.dotColor}" opacity="0.6"/>
+            <circle cx="60" cy="40" r="5" fill="${p.dotColor}" opacity="0.5"/>
+            <circle cx="68" cy="58" r="7" fill="${p.dotColor}" opacity="0.6"/>
+            <circle cx="44" cy="66" r="5" fill="${p.dotColor}" opacity="0.5"/>
+            <circle cx="55" cy="54" r="5" fill="${p.dotColor}" opacity="0.4"/>
+            <circle cx="38" cy="62" r="3.5" fill="${p.dotColor}" opacity="0.4"/>
+          </svg>
+          <div class="card-badge">${p.badgeText}</div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-name">${p.name}</h3>
+          <p class="card-desc">${p.desc}</p>
+          <p class="card-allergen">${p.allergens} · 12 cookies · 400g</p>
+          <div class="card-type-toggle" role="group" aria-label="Select cookie type">
+            <button class="toggle-btn active" onclick="setType('${p.id}','frozen',this)" aria-pressed="true">Frozen Dough</button>
+            <button class="toggle-btn" onclick="setType('${p.id}','baked',this)" aria-pressed="false">Baked &amp; Frozen</button>
+          </div>
+          <div class="card-footer">
+            <div>
+              <div class="card-price">${p.price} <span>AED / pack</span></div>
+            </div>
+            <div class="qty-control" aria-label="Quantity">
+              <button class="qty-btn" onclick="adjustQty('${p.id}',-1)" aria-label="Decrease quantity">−</button>
+              <span class="qty-display" id="qty-${p.id}" aria-live="polite">1</span>
+              <button class="qty-btn" onclick="adjustQty('${p.id}',1)" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+          <button class="add-to-cart-btn" onclick="addToCart('${p.id}')" aria-label="Add ${p.name} to cart">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
+            </svg>
+            Add to Cart
+          </button>
+        </div>
+      </article>
+    `).join('');
+  }
+
+  // ── RENDER FAQ ──
+  function renderFaq() {
+    const list = document.getElementById('faqList');
+    list.innerHTML = faqs.map((f, i) => `
+      <div class="faq-item" id="faq-${i}">
+        <button class="faq-question" onclick="toggleFaq(${i})" aria-expanded="false" aria-controls="faq-answer-${i}">
+          ${f.q}
+          <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="faq-answer" id="faq-answer-${i}" role="region">
+          <p>${f.a}</p>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // ── FAQ TOGGLE ──
+  function toggleFaq(i) {
+    const item = document.getElementById(`faq-${i}`);
+    const btn = item.querySelector('.faq-question');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  // ── PRODUCT INTERACTIONS ──
+  function setType(id, type, btn) {
+    cardType[id] = type;
+    const toggle = btn.closest('.card-type-toggle');
+    toggle.querySelectorAll('.toggle-btn').forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-pressed', 'false');
+    });
+    btn.classList.add('active');
+    btn.setAttribute('aria-pressed', 'true');
+  }
+
+  function adjustQty(id, delta) {
+    cardQty[id] = Math.max(1, (cardQty[id] || 1) + delta);
+    document.getElementById(`qty-${id}`).textContent = cardQty[id];
+  }
+
+  function addToCart(id) {
+    const product = products.find(p => p.id === id);
+    const qty = cardQty[id];
+    const type = cardType[id];
+    const key = `${id}-${type}`;
+
+    const existing = cart.find(i => i.key === key);
+    if (existing) {
+      existing.qty += qty;
+    } else {
+      cart.push({ key, id, type, qty, product });
+    }
+
+    updateCartUI();
+    openCart();
+
+    // Pulse button
+    const btn = document.querySelector(`[onclick="addToCart('${id}')"]`);
+    if (btn) {
+      btn.classList.remove('pulsed');
+      void btn.offsetWidth;
+      btn.classList.add('pulsed');
+      setTimeout(() => btn.classList.remove('pulsed'), 400);
+    }
+  }
+
+  // ── CART UI ──
+  function getSubtotal() { return cart.reduce((sum, i) => sum + i.product.price * i.qty, 0); }
+  function getShipping() { return getSubtotal() >= 120 ? 0 : 20; }
+  function getTotal() { return getSubtotal() + getShipping(); }
+
+  function updateCartUI() {
+    const count = cart.reduce((sum, i) => sum + i.qty, 0);
+    const countEl = document.getElementById('cartCount');
+    countEl.textContent = count;
+    countEl.classList.toggle('visible', count > 0);
+
+    const itemsEl = document.getElementById('cartItems');
+    const footerEl = document.getElementById('cartFooter');
+
+    if (cart.length === 0) {
+      itemsEl.innerHTML = `
+        <div class="cart-empty">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+          <p>Your cart is empty.<br/>Pick a flavour above!</p>
+        </div>`;
+      footerEl.style.display = 'none';
+      return;
+    }
+
+    itemsEl.innerHTML = cart.map(item => `
+      <div class="cart-item">
+        <div class="cart-item-color" style="background:${item.product.visualColor}" aria-hidden="true"></div>
+        <div class="cart-item-info">
+          <div class="cart-item-name">${item.product.name}</div>
+          <div class="cart-item-type">${item.type === 'frozen' ? 'Frozen Dough' : 'Baked & Frozen'} · ${item.product.price} AED/pack</div>
+          <div class="cart-item-controls">
+            <button class="cart-qty-btn" onclick="cartAdjust('${item.key}',-1)" aria-label="Decrease quantity">−</button>
+            <span class="cart-item-qty" aria-live="polite">${item.qty}</span>
+            <button class="cart-qty-btn" onclick="cartAdjust('${item.key}',1)" aria-label="Increase quantity">+</button>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
+          <span class="cart-item-price">${item.product.price * item.qty} AED</span>
+          <button class="cart-remove-btn" onclick="cartRemove('${item.key}')" aria-label="Remove ${item.product.name} from cart">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>
+          </button>
+        </div>
+      </div>
+    `).join('');
+
+    footerEl.style.display = 'block';
+
+    const sub = getSubtotal();
+    const ship = getShipping();
+    const total = getTotal();
+
+    document.getElementById('cartSubtotal').textContent = `${sub} AED`;
+    const shipRow = document.getElementById('shippingRow');
+    const shipAmt = document.getElementById('shippingAmount');
+
+    if (ship === 0) {
+      shipRow.className = 'cart-shipping-row free';
+      shipAmt.textContent = 'FREE';
+      document.getElementById('freeDeliveryNotice').style.display = 'none';
+    } else {
+      shipRow.className = 'cart-shipping-row';
+      shipAmt.textContent = '+20 AED';
+      const needed = 120 - sub;
+      const notice = document.getElementById('freeDeliveryNotice');
+      notice.style.display = 'block';
+      notice.textContent = `Add ${needed} AED more for FREE delivery!`;
+    }
+
+    document.getElementById('cartTotal').textContent = `${total} AED`;
+  }
+
+  function cartAdjust(key, delta) {
+    const item = cart.find(i => i.key === key);
+    if (!item) return;
+    item.qty = Math.max(1, item.qty + delta);
+    updateCartUI();
+  }
+
+  function cartRemove(key) {
+    cart = cart.filter(i => i.key !== key);
+    updateCartUI();
+  }
+
+  // ── CART OPEN/CLOSE ──
+  function openCart() {
+    document.getElementById('cartDrawer').classList.add('open');
+    document.getElementById('cartOverlay').classList.add('open');
+    document.getElementById('cartDrawer').removeAttribute('aria-hidden');
+  }
+
+  function closeCart() {
+    document.getElementById('cartDrawer').classList.remove('open');
+    document.getElementById('cartOverlay').classList.remove('open');
+    document.getElementById('cartDrawer').setAttribute('aria-hidden', 'true');
+  }
+
+  // ── CHECKOUT OPEN/CLOSE ──
+  function openCheckout() {
+    if (cart.length === 0) return;
+    closeCart();
+    renderModalSummary();
+    document.getElementById('checkoutModal').classList.add('open');
+    document.getElementById('checkoutFormView').classList.remove('hidden');
+    document.getElementById('confirmationView').classList.remove('visible');
+  }
+
+  function closeCheckout() {
+    document.getElementById('checkoutModal').classList.remove('open');
+  }
+
+  function closeCheckoutAndReset() {
+    cart = [];
+    updateCartUI();
+    closeCheckout();
+  }
+
+  function renderModalSummary() {
+    const sub = getSubtotal();
+    const ship = getShipping();
+    const total = getTotal();
+    const rows = cart.map(i => `
+      <div class="summary-row">
+        <span>${i.product.name} × ${i.qty} (${i.type === 'frozen' ? 'Frozen Dough' : 'Baked & Frozen'})</span>
+        <span>${i.product.price * i.qty} AED</span>
+      </div>
+    `).join('');
+    document.getElementById('modalOrderSummary').innerHTML = `
+      <div class="summary-title">Order Summary</div>
+      ${rows}
+      <div class="summary-row" style="color:var(--text-muted)">
+        <span>Delivery</span>
+        <span>${ship === 0 ? 'FREE' : '+20 AED'}</span>
+      </div>
+      <div class="summary-row summary-total">
+        <span>Total</span>
+        <span>${total} AED</span>
+      </div>
+    `;
+  }
+
+  // ── FORM SUBMIT ──
+  document.addEventListener('DOMContentLoaded', () => {
+    renderProducts();
+    renderFaq();
+    updateCartUI();
+
+    const form = document.getElementById('checkoutForm');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('custName').value.trim();
+      const phone = document.getElementById('custPhone').value.trim();
+      const email = document.getElementById('custEmail').value.trim();
+      const emirate = document.getElementById('custEmirate').value;
+      const area = document.getElementById('custArea').value.trim();
+      const address = document.getElementById('custAddress').value.trim();
+
+      if (!name || !phone || !email || !emirate || !area || !address) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+
+      // Build confirmation summary
+      const sub = getSubtotal();
+      const ship = getShipping();
+      const total = getTotal();
+      const rows = cart.map(i => `
+        <div class="summary-row">
+          <span>${i.product.name} × ${i.qty}</span>
+          <span>${i.product.price * i.qty} AED</span>
+        </div>
+      `).join('');
+
+      document.getElementById('confirmOrderBox').innerHTML = `
+        <div class="summary-title">Your Order</div>
+        ${rows}
+        <div class="summary-row" style="color:var(--text-muted)">
+          <span>Delivery to ${emirate}</span>
+          <span>${ship === 0 ? 'FREE' : '+20 AED'}</span>
+        </div>
+        <div class="summary-row summary-total">
+          <span>Total (Cash on Delivery)</span>
+          <span>${total} AED</span>
+        </div>
+        <div style="margin-top:14px;padding-top:12px;border-top:1px solid rgba(139,98,52,0.12);font-size:0.82rem;color:var(--text-muted)">
+          <strong>Delivering to:</strong> ${name} · ${emirate}, ${area}<br/>
+          <strong>Contact:</strong> ${phone} · ${email}
+        </div>
+      `;
+
+      document.getElementById('checkoutFormView').classList.add('hidden');
+      document.getElementById('confirmationView').classList.add('visible');
+      form.reset();
+    });
+  });
+</script>
+</body>
+</html>
