@@ -586,34 +586,6 @@
       margin: 0 auto;
     }
 
-    .story-visual {
-      border-radius: 24px;
-      background: linear-gradient(135deg, #C8894A, #8B5E2E);
-      height: 400px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .story-visual-inner {
-      text-align: center;
-      color: var(--cream);
-    }
-
-    .story-visual-inner h3 {
-      font-size: 2rem;
-      font-weight: 900;
-      margin-bottom: 8px;
-    }
-
-    .story-visual-inner p {
-      font-size: 0.875rem;
-      opacity: 0.8;
-      letter-spacing: 0.1em;
-    }
-
     .story-text { }
 
     .story-quote {
@@ -1164,10 +1136,134 @@
     }
     .confirm-close-btn:hover { background: var(--brown-dark); }
 
+    /* ── STORY PHOTO GRID ── */
+    .story-visual {
+      border-radius: 24px;
+      overflow: hidden;
+      height: 420px;
+    }
+
+    .story-photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 6px;
+      height: 100%;
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    .story-photo {
+      position: relative;
+      overflow: hidden;
+      border-radius: 6px;
+    }
+
+    .story-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 400ms ease;
+    }
+    .story-photo:hover img { transform: scale(1.04); }
+
+    .story-photo-tall { grid-row: span 2; }
+    .story-photo-wide { grid-column: span 2; }
+
+    .photo-fallback {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    /* ── GALLERY ── */
+    .gallery-section { background: var(--brown-deep); padding: 80px 24px; }
+    .gallery-section .section-label { color: #C9A87A; }
+    .gallery-section .section-title { color: var(--cream); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .gallery-tile {
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 1;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .gallery-tile:nth-child(1) { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+
+    .gallery-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 400ms ease;
+    }
+    .gallery-tile:hover img { transform: scale(1.06); }
+
+    .gallery-tile-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.72rem;
+      color: rgba(245,237,216,0.35);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(20,10,5,0.95);
+      z-index: 300;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 300ms;
+    }
+    .lightbox.open { opacity: 1; pointer-events: all; }
+    .lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 8px; }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(245,237,216,0.15);
+      border: none;
+      color: var(--cream);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      transition: background 150ms;
+    }
+    .lightbox-close:hover { background: rgba(245,237,216,0.25); }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       .story-inner { grid-template-columns: 1fr; gap: 36px; }
-      .story-visual { height: 240px; }
+      .story-visual { height: 280px; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-tile:nth-child(1) { grid-column: span 2; aspect-ratio: 16/9; }
       .footer-inner { grid-template-columns: 1fr; gap: 32px; }
       .form-row { grid-template-columns: 1fr; }
       nav { padding: 0 16px; }
@@ -1310,28 +1406,53 @@
 <section class="story-section" id="story" aria-labelledby="story-title">
   <div class="story-inner">
     <div class="story-visual" aria-hidden="true">
-      <div class="story-visual-inner">
-        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" style="margin-bottom:16px">
-          <circle cx="40" cy="40" r="38" fill="rgba(245,237,216,0.15)" stroke="rgba(245,237,216,0.4)" stroke-width="2"/>
-          <circle cx="30" cy="32" r="6" fill="rgba(245,237,216,0.8)"/>
-          <circle cx="46" cy="28" r="4.5" fill="rgba(245,237,216,0.7)"/>
-          <circle cx="52" cy="44" r="6" fill="rgba(245,237,216,0.8)"/>
-          <circle cx="34" cy="52" r="4.5" fill="rgba(245,237,216,0.7)"/>
-          <circle cx="42" cy="42" r="4" fill="rgba(245,237,216,0.6)"/>
-        </svg>
-        <h3>Made with love</h3>
-        <p>Abu Dhabi, 2024</p>
+      <!--
+        PHOTO GRID — replace each src="img/photo-X.jpg" with your actual image files.
+        Suggested mapping from your product photos:
+          photo-1: gooey cookie pull-apart shot
+          photo-2: cookies on baking tray
+          photo-3: cookie dough roll in freezer drawer
+          photo-4: stacked cookie tower
+      -->
+      <div class="story-photo-grid">
+        <div class="story-photo story-photo-tall" style="background:linear-gradient(135deg,#C8894A,#8B5E2E)">
+          <img src="img/photo-1.jpg" alt="Gooey chocolate chip cookie pulled apart" loading="lazy" onerror="this.style.display='none'" />
+          <div class="photo-fallback" aria-hidden="true">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" fill="rgba(245,237,216,0.2)"/><circle cx="14" cy="17" r="3.5" fill="rgba(245,237,216,0.7)"/><circle cx="22" cy="14" r="2.5" fill="rgba(245,237,216,0.6)"/><circle cx="26" cy="24" r="3.5" fill="rgba(245,237,216,0.7)"/><circle cx="15" cy="26" r="2.5" fill="rgba(245,237,216,0.6)"/></svg>
+          </div>
+        </div>
+        <div class="story-photo" style="background:linear-gradient(135deg,#A0724A,#6B4A24)">
+          <img src="img/photo-2.jpg" alt="Fresh cookies on baking tray" loading="lazy" onerror="this.style.display='none'" />
+          <div class="photo-fallback" aria-hidden="true">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect x="2" y="10" width="32" height="22" rx="3" fill="rgba(245,237,216,0.2)"/><circle cx="10" cy="21" r="5" fill="rgba(245,237,216,0.4)"/><circle cx="22" cy="21" r="5" fill="rgba(245,237,216,0.4)"/></svg>
+          </div>
+        </div>
+        <div class="story-photo" style="background:linear-gradient(135deg,#3D2810,#1E0E05)">
+          <img src="img/photo-3.jpg" alt="Cookie dough roll in freezer" loading="lazy" onerror="this.style.display='none'" />
+          <div class="photo-fallback" aria-hidden="true">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect x="2" y="2" width="32" height="32" rx="4" fill="rgba(245,237,216,0.1)"/><ellipse cx="18" cy="18" rx="10" ry="6" fill="rgba(245,237,216,0.3)"/></svg>
+          </div>
+        </div>
+        <div class="story-photo story-photo-wide" style="background:linear-gradient(135deg,#C8894A,#9A6A3A)">
+          <img src="img/photo-4.jpg" alt="Stack of freshly baked cookies" loading="lazy" onerror="this.style.display='none'" />
+          <div class="photo-fallback" aria-hidden="true">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="28" r="7" fill="rgba(245,237,216,0.4)"/><circle cx="18" cy="20" r="7" fill="rgba(245,237,216,0.45)"/><circle cx="18" cy="12" r="7" fill="rgba(245,237,216,0.5)"/></svg>
+          </div>
+        </div>
       </div>
     </div>
     <div class="story-text">
       <p class="section-label">Our Story</p>
-      <h2 class="section-title" id="story-title">Born in an Abu Dhabi Kitchen</h2>
-      <p class="story-quote">"Real butter. Real chocolate. Real love. No shortcuts."</p>
+      <h2 class="section-title" id="story-title">Born from a Cookie Emergency</h2>
+      <p class="story-quote">"It was the first week of June. I was deep in my AI PhD Doctoral Seminar — and all I could think about was cookies."</p>
       <p class="story-body">
-        Emergency Cookies started in 2024 with a simple obsession: the perfect cookie. Not the kind from a factory. The kind that fills your home with that warm, buttery smell and comes out of the oven with crispy edges and a gooey, chocolate-pooled centre.
+        Mid-study, the craving hit hard. I went to the fridge, found some cookie dough, baked it, and ate it in under 7 minutes. Then went straight back to my research. Effective.
       </p>
       <p class="story-body">
-        We make every batch by hand in Abu Dhabi, freeze them at their peak, and deliver them to your door across all UAE. All you need to do is bake. 12 minutes and you're done. That's the emergency plan.
+        That moment stuck with me. I needed a cookie — urgently — and somehow managed it. And then the thought hit: <em>why can't anyone else in the UAE do this?</em> Why is there no frozen cookie dough to grab off a shelf and bake at home? The idea for Emergency Cookies was born right there, textbooks open, chocolate on my fingers.
+      </p>
+      <p class="story-body">
+        So I built it. Every recipe tested from scratch in an Abu Dhabi kitchen. The branding, the website, and the design — all created with AI. Real butter, real chocolate, real love. No shortcuts. Just cookies, exactly when you need them.
       </p>
       <div class="story-stats">
         <div class="stat">
@@ -1352,6 +1473,20 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- PHOTO GALLERY -->
+<section class="gallery-section" aria-labelledby="gallery-title">
+  <div class="section-inner">
+    <p class="section-label" style="text-align:center">The Real Deal</p>
+    <h2 class="section-title" id="gallery-title" style="text-align:center;margin-bottom:48px">Made to be Eaten</h2>
+    <!--
+      INSTRUCTIONS: Save your 12 product photos as:
+        img/g1.jpg through img/g12.jpg
+      The grid will display them automatically. Placeholder tiles show until images are added.
+    -->
+    <div class="gallery-grid" id="galleryGrid" aria-label="Emergency Cookies product photos"></div>
   </div>
 </section>
 
@@ -1521,7 +1656,67 @@
   </div>
 </div>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" onclick="closeLightbox()">
+  <img id="lightboxImg" src="" alt="" />
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close image viewer">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+</div>
+
 <script>
+  // ── GALLERY ──
+  const galleryPhotos = [
+    { src: 'img/g1.jpg', alt: 'Gooey chocolate chip cookie broken apart showing melted chocolate' },
+    { src: 'img/g2.jpg', alt: 'Hands pulling apart a warm chocolate chip cookie' },
+    { src: 'img/g3.jpg', alt: 'Fresh cookies on a baking tray with parchment paper' },
+    { src: 'img/g4.jpg', alt: 'Emergency Cookies branded dough roll packaging with sliced dough' },
+    { src: 'img/g5.jpg', alt: 'Emergency Cookies dough roll in a freezer drawer' },
+    { src: 'img/g6.jpg', alt: 'Tall stack of freshly baked chocolate chip cookies' },
+    { src: 'img/g7.jpg', alt: 'Cookie on a plate next to a laptop and coffee — the original emergency' },
+    { src: 'img/g8.jpg', alt: 'Three flavours side by side: chocolate chip, white choc, lemon white choc' },
+    { src: 'img/g9.jpg', alt: 'Cookie dough log sliced to show chocolate chip filling' },
+    { src: 'img/g10.jpg', alt: 'Emergency Cookies branded packaging standing upright' },
+    { src: 'img/g11.jpg', alt: 'Plate of freshly baked cookies on linen' },
+    { src: 'img/g12.jpg', alt: 'Flat lay of baking ingredients: butter, eggs, sugars, chocolate chips, flour' },
+  ];
+
+  const galleryBgColors = [
+    '#C8894A','#A0724A','#6B4A24','#3D2010',
+    '#9A6A3A','#7A5030','#C8894A','#E8D840',
+    '#A0724A','#8B5E2E','#C8894A','#6B4A24'
+  ];
+
+  function renderGallery() {
+    const grid = document.getElementById('galleryGrid');
+    if (!grid) return;
+    grid.innerHTML = galleryPhotos.map((photo, i) => `
+      <div class="gallery-tile" style="background:${galleryBgColors[i]}" onclick="openLightbox('${photo.src}','${photo.alt}')" role="button" tabindex="0" aria-label="View: ${photo.alt}" onkeydown="if(event.key==='Enter')openLightbox('${photo.src}','${photo.alt}')">
+        <img src="${photo.src}" alt="${photo.alt}" loading="lazy" onerror="this.style.display='none'" />
+        <div class="gallery-tile-placeholder" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(245,237,216,0.3)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="9" cy="10" r="2"/><circle cx="14" cy="8" r="1.5"/><circle cx="15" cy="14" r="2"/></svg>
+          <span>photo ${i + 1}</span>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function openLightbox(src, alt) {
+    const lb = document.getElementById('lightbox');
+    const img = document.getElementById('lightboxImg');
+    img.src = src;
+    img.alt = alt;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
   // ── DATA ──
   const products = [
     {
@@ -1878,6 +2073,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     renderProducts();
     renderFaq();
+    renderGallery();
     updateCartUI();
 
     const form = document.getElementById('checkoutForm');
