@@ -385,19 +385,10 @@
     .card-visual {
       height: 200px;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       justify-content: center;
       position: relative;
       overflow: hidden;
-      padding-bottom: 0;
-    }
-
-    .card-visual svg {
-      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.15));
-      transition: transform 300ms ease;
-    }
-    .product-card:hover .card-visual svg {
-      transform: translateX(4px);
     }
 
     /* OG card */
@@ -1813,305 +1804,22 @@
   const cardType = {};
   products.forEach(p => { cardQty[p.id] = 1; cardType[p.id] = 'frozen'; });
 
-  const cookieScenes = {
-
-    // OG: Cookie driving an ambulance 🚑
-    og: `<svg width="160" height="140" viewBox="0 0 160 140" aria-hidden="true">
-      <!-- road -->
-      <rect x="0" y="108" width="160" height="32" fill="#555" rx="4"/>
-      <rect x="0" y="120" width="160" height="4" fill="#666"/>
-      <rect x="10" y="121" width="20" height="2" fill="#FFD700" rx="1"/>
-      <rect x="50" y="121" width="20" height="2" fill="#FFD700" rx="1"/>
-      <rect x="90" y="121" width="20" height="2" fill="#FFD700" rx="1"/>
-      <rect x="130" y="121" width="20" height="2" fill="#FFD700" rx="1"/>
-      <!-- ambulance body -->
-      <rect x="18" y="72" width="90" height="40" rx="6" fill="white" stroke="#DDD" stroke-width="1.5"/>
-      <!-- cab front -->
-      <path d="M108 88 L124 88 L128 100 L108 100 Z" fill="white" stroke="#DDD" stroke-width="1.5"/>
-      <!-- windshield -->
-      <path d="M110 90 L122 90 L125 99 L110 99 Z" fill="#AEE4F8" opacity="0.8"/>
-      <!-- red stripe -->
-      <rect x="18" y="84" width="90" height="8" fill="#E02020"/>
-      <!-- red cross on side -->
-      <rect x="60" y="76" width="14" height="5" rx="1.5" fill="#E02020"/>
-      <rect x="65" y="72" width="4" height="13" rx="1.5" fill="#E02020"/>
-      <!-- EMERGENCY text -->
-      <text x="34" y="81" font-family="Arial" font-weight="bold" font-size="5.5" fill="white" letter-spacing="0.5">EMERGENCY</text>
-      <!-- siren on roof -->
-      <rect x="52" y="64" width="28" height="10" rx="3" fill="#CC0000"/>
-      <ellipse cx="66" cy="64" rx="10" ry="6" fill="#FF2020"/>
-      <ellipse cx="66" cy="63" rx="7" ry="4" fill="#FF6060"/>
-      <ellipse cx="64" cy="62" rx="2.5" ry="1.5" fill="white" opacity="0.5"/>
-      <!-- siren rays -->
-      <line x1="66" y1="57" x2="66" y2="53" stroke="#FF4040" stroke-width="2" stroke-linecap="round"/>
-      <line x1="74" y1="59" x2="77" y2="56" stroke="#FF4040" stroke-width="2" stroke-linecap="round"/>
-      <line x1="58" y1="59" x2="55" y2="56" stroke="#FF4040" stroke-width="2" stroke-linecap="round"/>
-      <!-- wheels -->
-      <circle cx="42" cy="112" r="10" fill="#333"/>
-      <circle cx="42" cy="112" r="6" fill="#555"/>
-      <circle cx="42" cy="112" r="3" fill="#888"/>
-      <circle cx="100" cy="112" r="10" fill="#333"/>
-      <circle cx="100" cy="112" r="6" fill="#555"/>
-      <circle cx="100" cy="112" r="3" fill="#888"/>
-      <circle cx="128" cy="112" r="8" fill="#333"/>
-      <circle cx="128" cy="112" r="5" fill="#555"/>
-      <circle cx="128" cy="112" r="2.5" fill="#888"/>
-      <!-- COOKIE DRIVER visible through rear window -->
-      <!-- cookie face in back window -->
-      <rect x="22" y="74" width="20" height="16" rx="3" fill="#AEE4F8" opacity="0.7"/>
-      <!-- cookie circle in window -->
-      <circle cx="32" cy="82" r="9" fill="#D4924A"/>
-      <circle cx="32" cy="82" r="8" fill="#E8AA64"/>
-      <!-- choc chips on cookie -->
-      <ellipse cx="28" cy="79" rx="2.5" ry="2" fill="#3D1F0A" transform="rotate(-10,28,79)"/>
-      <ellipse cx="35" cy="78" rx="2" ry="1.8" fill="#3D1F0A" transform="rotate(8,35,78)"/>
-      <ellipse cx="36" cy="84" rx="2.5" ry="2" fill="#3D1F0A" transform="rotate(-5,36,84)"/>
-      <ellipse cx="28" cy="85" rx="2" ry="1.8" fill="#3D1F0A" transform="rotate(6,28,85)"/>
-      <!-- cookie eyes -->
-      <circle cx="29" cy="80" r="2" fill="white"/>
-      <circle cx="35" cy="80" r="2" fill="white"/>
-      <circle cx="29.5" cy="80" r="1" fill="#1A0A02"/>
-      <circle cx="35.5" cy="80" r="1" fill="#1A0A02"/>
-      <!-- cookie smile -->
-      <path d="M29 85 Q32 88 36 85" stroke="#3D1F0A" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-      <!-- speed lines -->
-      <line x1="0" y1="90" x2="14" y2="90" stroke="#CCC" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
-      <line x1="0" y1="96" x2="10" y2="96" stroke="#CCC" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
-      <line x1="0" y1="84" x2="8" y2="84" stroke="#CCC" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
-    </svg>`,
-
-    // Macadamia: Cookie + Nut riding together in a convertible 🚗
-    mac: `<svg width="160" height="140" viewBox="0 0 160 140" aria-hidden="true">
-      <!-- road -->
-      <rect x="0" y="108" width="160" height="32" fill="#6B5E4A" rx="4"/>
-      <rect x="0" y="120" width="160" height="4" fill="#7A6A58"/>
-      <rect x="10" y="121" width="18" height="2" fill="#EED090" rx="1"/>
-      <rect x="48" y="121" width="18" height="2" fill="#EED090" rx="1"/>
-      <rect x="86" y="121" width="18" height="2" fill="#EED090" rx="1"/>
-      <rect x="124" y="121" width="18" height="2" fill="#EED090" rx="1"/>
-      <!-- car body — creamy convertible -->
-      <path d="M20 95 L140 95 L145 108 L15 108 Z" fill="#D8C89A"/>
-      <rect x="20" y="85" width="120" height="12" rx="3" fill="#C8B480" stroke="#B8A470" stroke-width="1"/>
-      <!-- windshield -->
-      <path d="M68 68 L90 68 L95 85 L63 85 Z" fill="#AEE4F8" opacity="0.7"/>
-      <!-- car hood -->
-      <path d="M95 85 L130 85 L135 95 L90 95 Z" fill="#D8C89A"/>
-      <!-- headlight -->
-      <ellipse cx="138" cy="96" rx="5" ry="3.5" fill="#FFF8D0"/>
-      <ellipse cx="138" cy="96" rx="3.5" ry="2.5" fill="#FFE860"/>
-      <!-- wheels -->
-      <circle cx="42" cy="112" r="10" fill="#4A3828"/>
-      <circle cx="42" cy="112" r="6" fill="#6A5040"/>
-      <circle cx="42" cy="112" r="3" fill="#9A8060"/>
-      <circle cx="112" cy="112" r="10" fill="#4A3828"/>
-      <circle cx="112" cy="112" r="6" fill="#6A5040"/>
-      <circle cx="112" cy="112" r="3" fill="#9A8060"/>
-      <!-- COOKIE in driver seat -->
-      <circle cx="76" cy="78" r="16" fill="#D4924A"/>
-      <circle cx="76" cy="78" r="14" fill="#E8AA64"/>
-      <!-- cookie white choc chips -->
-      <ellipse cx="70" cy="73" rx="3.5" ry="2.8" fill="#F8F0DC"/>
-      <ellipse cx="80" cy="72" rx="3" ry="2.5" fill="#F8F0DC"/>
-      <ellipse cx="82" cy="80" rx="3.5" ry="2.8" fill="#F8F0DC"/>
-      <ellipse cx="70" cy="82" rx="3" ry="2.5" fill="#F8F0DC"/>
-      <!-- cookie eyes -->
-      <circle cx="72" cy="76" r="3" fill="white"/>
-      <circle cx="80" cy="76" r="3" fill="white"/>
-      <circle cx="72.8" cy="76" r="1.5" fill="#3D2810"/>
-      <circle cx="80.8" cy="76" r="1.5" fill="#3D2810"/>
-      <circle cx="73.5" cy="75" r="0.7" fill="white"/>
-      <circle cx="81.5" cy="75" r="0.7" fill="white"/>
-      <!-- cookie smile -->
-      <path d="M71 82 Q76 87 81 82" stroke="#7A5030" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-      <!-- cookie arm on wheel -->
-      <path d="M82 82 Q88 84 90 82" stroke="#D4924A" stroke-width="3" fill="none" stroke-linecap="round"/>
-      <!-- MACADAMIA NUT passenger -->
-      <!-- nut body — kidney/oval shape -->
-      <path d="M100 64 Q118 60 122 72 Q126 84 118 90 Q108 96 100 88 Q92 80 100 64Z" fill="#C8A050"/>
-      <path d="M102 66 Q118 63 121 73 Q124 83 117 88 Q108 93 101 86 Q94 80 102 66Z" fill="#D8B468"/>
-      <!-- nut texture line -->
-      <path d="M103 68 Q112 65 118 73 Q120 80 116 86" stroke="#B89040" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.6"/>
-      <!-- nut eyes -->
-      <circle cx="107" cy="76" r="3" fill="white"/>
-      <circle cx="114" cy="75" r="3" fill="white"/>
-      <circle cx="107.8" cy="76" r="1.5" fill="#3D2810"/>
-      <circle cx="114.8" cy="75" r="1.5" fill="#3D2810"/>
-      <circle cx="108.5" cy="75" r="0.7" fill="white"/>
-      <circle cx="115.5" cy="74" r="0.7" fill="white"/>
-      <!-- nut smile -->
-      <path d="M106 82 Q111 87 116 82" stroke="#8A6820" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-      <!-- rosy cheeks -->
-      <ellipse cx="104" cy="82" rx="4" ry="2.5" fill="#F0A0A0" opacity="0.4"/>
-      <ellipse cx="118" cy="81" rx="4" ry="2.5" fill="#F0A0A0" opacity="0.4"/>
-      <!-- wind lines -->
-      <path d="M8 75 Q18 72 12 78" stroke="#DDD0B0" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.5"/>
-      <path d="M4 85 Q14 83 8 88" stroke="#DDD0B0" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.4"/>
-    </svg>`,
-
-    // Brownie: Cookie + Brownie in a race car 🏎️
-    brownie: `<svg width="160" height="140" viewBox="0 0 160 140" aria-hidden="true">
-      <!-- road -->
-      <rect x="0" y="108" width="160" height="32" fill="#333" rx="4"/>
-      <rect x="0" y="120" width="160" height="3" fill="#444"/>
-      <rect x="8" y="121" width="15" height="2" fill="white" rx="1" opacity="0.6"/>
-      <rect x="44" y="121" width="15" height="2" fill="white" rx="1" opacity="0.6"/>
-      <rect x="80" y="121" width="15" height="2" fill="white" rx="1" opacity="0.6"/>
-      <rect x="116" y="121" width="15" height="2" fill="white" rx="1" opacity="0.6"/>
-      <!-- race car — low and wide -->
-      <path d="M15 100 L145 100 L148 108 L12 108 Z" fill="#2A1206"/>
-      <path d="M25 84 L55 72 L105 72 L130 84 L145 100 L15 100 Z" fill="#3D1C0A"/>
-      <!-- cockpit canopy -->
-      <path d="M58 72 L102 72 L110 84 L50 84 Z" fill="#1A0A02"/>
-      <path d="M60 73 L100 73 L106 82 L54 82 Z" fill="#2A3A4A" opacity="0.8"/>
-      <!-- racing stripe -->
-      <rect x="25" y="90" width="120" height="6" fill="#E02020" opacity="0.7"/>
-      <!-- number on car -->
-      <circle cx="30" cy="95" r="7" fill="white"/>
-      <text x="27" y="98" font-family="Arial" font-weight="900" font-size="8" fill="#1A0A02">1</text>
-      <!-- front wing -->
-      <path d="M130 100 L155 96 L158 102 L130 104 Z" fill="#2A1206"/>
-      <!-- rear wing -->
-      <path d="M15 96 L5 90 L8 88 L20 95 Z" fill="#2A1206"/>
-      <rect x="5" y="88" width="14" height="3" rx="1" fill="#3D1C0A"/>
-      <!-- wheels -->
-      <circle cx="40" cy="110" r="9" fill="#1A1A1A"/>
-      <circle cx="40" cy="110" r="5.5" fill="#333"/>
-      <circle cx="40" cy="110" r="2.5" fill="#666"/>
-      <circle cx="115" cy="110" r="9" fill="#1A1A1A"/>
-      <circle cx="115" cy="110" r="5.5" fill="#333"/>
-      <circle cx="115" cy="110" r="2.5" fill="#666"/>
-      <!-- COOKIE driver (peeking from cockpit) -->
-      <circle cx="70" cy="78" r="13" fill="#D4924A"/>
-      <circle cx="70" cy="78" r="11" fill="#E8AA64"/>
-      <!-- cookie choc chips -->
-      <ellipse cx="65" cy="74" rx="3" ry="2.4" fill="#3D1F0A" transform="rotate(-8,65,74)"/>
-      <ellipse cx="74" cy="73" rx="2.6" ry="2.2" fill="#3D1F0A" transform="rotate(6,74,73)"/>
-      <ellipse cx="76" cy="80" rx="3" ry="2.4" fill="#3D1F0A" transform="rotate(-5,76,80)"/>
-      <ellipse cx="64" cy="81" rx="2.6" ry="2.2" fill="#3D1F0A" transform="rotate(8,64,81)"/>
-      <!-- cookie eyes — focused, racing -->
-      <circle cx="66" cy="76" r="2.5" fill="white"/>
-      <circle cx="74" cy="76" r="2.5" fill="white"/>
-      <circle cx="66.8" cy="76" r="1.3" fill="#1A0A02"/>
-      <circle cx="74.8" cy="76" r="1.3" fill="#1A0A02"/>
-      <!-- determined brow -->
-      <path d="M63 72 Q66 70 69 72" stroke="#3D1F0A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-      <path d="M71 72 Q74 70 77 72" stroke="#3D1F0A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-      <!-- smirk -->
-      <path d="M65 82 Q70 86 74 82" stroke="#3D1F0A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-      <!-- BROWNIE co-driver -->
-      <!-- brownie square shape with face -->
-      <rect x="85" y="67" width="26" height="24" rx="4" fill="#2A1206"/>
-      <rect x="86" y="68" width="24" height="22" rx="3" fill="#3D1C0A"/>
-      <!-- brownie crinkle top -->
-      <path d="M87 70 Q92 67 97 70 Q102 67 108 70" stroke="#5A2E12" stroke-width="2" fill="none" stroke-linecap="round"/>
-      <!-- brownie eyes -->
-      <circle cx="94" cy="76" r="2.5" fill="white"/>
-      <circle cx="102" cy="76" r="2.5" fill="white"/>
-      <circle cx="94.8" cy="76" r="1.3" fill="#0A0402"/>
-      <circle cx="102.8" cy="76" r="1.3" fill="#0A0402"/>
-      <!-- brownie smile -->
-      <path d="M92 82 Q98 87 104 82" stroke="#5A2E12" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-      <!-- cheeks -->
-      <ellipse cx="91" cy="81" rx="3.5" ry="2" fill="#C04040" opacity="0.3"/>
-      <ellipse cx="106" cy="81" rx="3.5" ry="2" fill="#C04040" opacity="0.3"/>
-      <!-- exhaust flames -->
-      <path d="M15 100 Q5 98 2 103 Q6 100 4 106 Q8 102 6 108" fill="#FF6020" opacity="0.8"/>
-      <path d="M15 102 Q3 102 0 106" fill="none" stroke="#FF8040" stroke-width="2" opacity="0.6"/>
-      <!-- speed lines -->
-      <line x1="0" y1="88" x2="12" y2="88" stroke="#555" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-      <line x1="0" y1="94" x2="8" y2="94" stroke="#555" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
-    </svg>`,
-
-    // Lemon: Cookie + Lemon in a sunny yellow car 🍋
-    lemon: `<svg width="160" height="140" viewBox="0 0 160 140" aria-hidden="true">
-      <!-- sunny sky gradient hint -->
-      <rect x="0" y="0" width="160" height="70" fill="#FFFDE0" opacity="0.4" rx="4"/>
-      <!-- road -->
-      <rect x="0" y="108" width="160" height="32" fill="#8A8A6A" rx="4"/>
-      <rect x="0" y="120" width="160" height="3" fill="#9A9A7A"/>
-      <rect x="10" y="121" width="16" height="2" fill="#FFFFA0" rx="1" opacity="0.7"/>
-      <rect x="46" y="121" width="16" height="2" fill="#FFFFA0" rx="1" opacity="0.7"/>
-      <rect x="82" y="121" width="16" height="2" fill="#FFFFA0" rx="1" opacity="0.7"/>
-      <rect x="118" y="121" width="16" height="2" fill="#FFFFA0" rx="1" opacity="0.7"/>
-      <!-- cute VW-style yellow car body -->
-      <path d="M18 98 L142 98 L146 108 L14 108 Z" fill="#D8CC30"/>
-      <rect x="18" y="84" width="124" height="16" rx="4" fill="#E8DC48" stroke="#C8BC28" stroke-width="1.5"/>
-      <!-- rounded roof -->
-      <path d="M55 68 Q80 58 105 68 L110 84 L50 84 Z" fill="#EAE060"/>
-      <!-- windshield -->
-      <path d="M57 69 Q80 61 103 69 L107 82 L53 82 Z" fill="#AEE4F8" opacity="0.75"/>
-      <!-- rear window -->
-      <rect x="22" y="70" width="26" height="16" rx="3" fill="#AEE4F8" opacity="0.6"/>
-      <!-- headlight -->
-      <ellipse cx="140" cy="96" rx="6" ry="4" fill="#FFF8D0"/>
-      <ellipse cx="140" cy="96" rx="4" ry="2.8" fill="#FFE860"/>
-      <!-- front bumper smile shape -->
-      <path d="M130 104 Q142 106 148 102" stroke="#C8BC28" stroke-width="2" fill="none" stroke-linecap="round"/>
-      <!-- wheels -->
-      <circle cx="42" cy="112" r="10" fill="#4A4A30"/>
-      <circle cx="42" cy="112" r="6.5" fill="#6A6A48"/>
-      <circle cx="42" cy="112" r="3" fill="#C8BC28"/>
-      <circle cx="112" cy="112" r="10" fill="#4A4A30"/>
-      <circle cx="112" cy="112" r="6.5" fill="#6A6A48"/>
-      <circle cx="112" cy="112" r="3" fill="#C8BC28"/>
-      <!-- COOKIE driver in rear window -->
-      <circle cx="35" cy="78" r="11" fill="#D8CC48"/>
-      <circle cx="35" cy="78" r="9.5" fill="#EAE060"/>
-      <!-- cookie white choc chips -->
-      <ellipse cx="30" cy="74" rx="2.8" ry="2.2" fill="#F8F4E0"/>
-      <ellipse cx="39" cy="73" rx="2.5" ry="2" fill="#F8F4E0"/>
-      <ellipse cx="40" cy="80" rx="2.8" ry="2.2" fill="#F8F4E0"/>
-      <ellipse cx="30" cy="81" rx="2.5" ry="2" fill="#F8F4E0"/>
-      <!-- cookie eyes -->
-      <circle cx="31" cy="77" r="2.2" fill="white"/>
-      <circle cx="39" cy="77" r="2.2" fill="white"/>
-      <circle cx="31.6" cy="77" r="1.1" fill="#3D3010"/>
-      <circle cx="39.6" cy="77" r="1.1" fill="#3D3010"/>
-      <!-- cookie big smile -->
-      <path d="M30 82 Q35 87 40 82" stroke="#8A7010" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-      <!-- LEMON PASSENGER in front -->
-      <!-- lemon oval body -->
-      <ellipse cx="80" cy="74" rx="20" ry="16" fill="#F5E020"/>
-      <ellipse cx="80" cy="74" rx="18" ry="14" fill="#F8EC40"/>
-      <!-- lemon pointed ends -->
-      <ellipse cx="60" cy="74" rx="4" ry="3" fill="#F5E020"/>
-      <ellipse cx="100" cy="74" rx="4" ry="3" fill="#F5E020"/>
-      <!-- lemon segment lines -->
-      <line x1="80" y1="60" x2="80" y2="88" stroke="#E8D020" stroke-width="1" opacity="0.5"/>
-      <line x1="62" y1="68" x2="98" y2="80" stroke="#E8D020" stroke-width="1" opacity="0.4"/>
-      <line x1="62" y1="80" x2="98" y2="68" stroke="#E8D020" stroke-width="1" opacity="0.4"/>
-      <!-- lemon eyes -->
-      <circle cx="74" cy="71" r="3" fill="white"/>
-      <circle cx="86" cy="71" r="3" fill="white"/>
-      <circle cx="74.8" cy="71" r="1.5" fill="#3D3810"/>
-      <circle cx="86.8" cy="71" r="1.5" fill="#3D3810"/>
-      <circle cx="75.5" cy="70" r="0.7" fill="white"/>
-      <circle cx="87.5" cy="70" r="0.7" fill="white"/>
-      <!-- lemon smile -->
-      <path d="M72 78 Q80 84 88 78" stroke="#8A7A10" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-      <!-- rosy cheeks -->
-      <ellipse cx="69" cy="77" rx="5" ry="3" fill="#F5A020" opacity="0.4"/>
-      <ellipse cx="91" cy="77" rx="5" ry="3" fill="#F5A020" opacity="0.4"/>
-      <!-- lemon arm waving out window -->
-      <path d="M98 72 Q108 66 112 60" stroke="#F5E020" stroke-width="4" fill="none" stroke-linecap="round"/>
-      <circle cx="113" cy="59" r="4" fill="#F5E020"/>
-      <!-- sun in sky -->
-      <circle cx="140" cy="22" r="14" fill="#FFE840" opacity="0.7"/>
-      <circle cx="140" cy="22" r="10" fill="#FFD820" opacity="0.8"/>
-      <line x1="140" y1="4" x2="140" y2="0" stroke="#FFD820" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>
-      <line x1="152" y1="10" x2="155" y2="7" stroke="#FFD820" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>
-      <line x1="128" y1="10" x2="125" y2="7" stroke="#FFD820" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>
-      <line x1="156" y1="22" x2="160" y2="22" stroke="#FFD820" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>
-    </svg>`,
-  };
-
   // ── RENDER PRODUCTS ──
   function renderProducts() {
     const grid = document.getElementById('productsGrid');
     grid.innerHTML = products.map(p => `
       <article class="product-card ${p.cardClass}" aria-label="${p.name} cookie pack">
         <div class="card-visual">
-          ${cookieScenes[p.id]}
+          <svg width="110" height="110" viewBox="0 0 110 110" aria-hidden="true">
+            <circle cx="55" cy="55" r="52" fill="${p.visualColor}" opacity="0.7"/>
+            <circle cx="55" cy="55" r="44" fill="${p.visualColor}"/>
+            <circle cx="40" cy="46" r="7" fill="${p.dotColor}" opacity="0.6"/>
+            <circle cx="60" cy="40" r="5" fill="${p.dotColor}" opacity="0.5"/>
+            <circle cx="68" cy="58" r="7" fill="${p.dotColor}" opacity="0.6"/>
+            <circle cx="44" cy="66" r="5" fill="${p.dotColor}" opacity="0.5"/>
+            <circle cx="55" cy="54" r="5" fill="${p.dotColor}" opacity="0.4"/>
+            <circle cx="38" cy="62" r="3.5" fill="${p.dotColor}" opacity="0.4"/>
+          </svg>
           <div class="card-badge">${p.badgeText}</div>
         </div>
         <div class="card-body">
