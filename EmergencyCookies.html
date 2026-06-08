@@ -1827,8 +1827,8 @@
           <p class="card-desc">${p.desc}</p>
           <p class="card-allergen">${p.allergens} · 12 cookies · 400g</p>
           <div class="card-type-toggle" role="group" aria-label="Select cookie type">
-            <button class="toggle-btn active" onclick="setType('${p.id}','frozen',this)" aria-pressed="true">Frozen Dough</button>
-            <button class="toggle-btn" onclick="setType('${p.id}','baked',this)" aria-pressed="false">Baked &amp; Frozen</button>
+            <button class="toggle-btn active" onclick="setType('${p.id}','frozen',this)" aria-pressed="true">Frozen</button>
+            <button class="toggle-btn" onclick="setType('${p.id}','baked',this)" aria-pressed="false">Baked</button>
           </div>
           <div class="card-footer">
             <div>
@@ -1958,7 +1958,7 @@
         <div class="cart-item-color" style="background:${item.product.visualColor}" aria-hidden="true"></div>
         <div class="cart-item-info">
           <div class="cart-item-name">${item.product.name}</div>
-          <div class="cart-item-type">${item.type === 'frozen' ? 'Frozen Dough' : 'Baked & Frozen'} · ${item.product.price} AED/pack</div>
+          <div class="cart-item-type">${item.type === 'frozen' ? 'Frozen' : 'Baked'} · ${item.product.price} AED/pack</div>
           <div class="cart-item-controls">
             <button class="cart-qty-btn" onclick="cartAdjust('${item.key}',-1)" aria-label="Decrease quantity">−</button>
             <span class="cart-item-qty" aria-live="polite">${item.qty}</span>
@@ -2051,7 +2051,7 @@
     const total = getTotal();
     const rows = cart.map(i => `
       <div class="summary-row">
-        <span>${i.product.name} × ${i.qty} (${i.type === 'frozen' ? 'Frozen Dough' : 'Baked & Frozen'})</span>
+        <span>${i.product.name} × ${i.qty} (${i.type === 'frozen' ? 'Frozen' : 'Baked'})</span>
         <span>${i.product.price * i.qty} AED</span>
       </div>
     `).join('');
