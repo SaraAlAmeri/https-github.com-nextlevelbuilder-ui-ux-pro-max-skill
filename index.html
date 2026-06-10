@@ -133,7 +133,7 @@
 
     /* ── HERO ── */
     .hero {
-      background: var(--cream);
+      background: #A0673A;
       min-height: 92vh;
       display: flex;
       flex-direction: column;
@@ -145,15 +145,17 @@
       text-align: center;
     }
 
-    /* Decorative dots */
-    .hero::before {
-      content: '';
+    /* Chocolate chip scatter layer */
+    .hero-chips {
       position: absolute;
       inset: 0;
-      background-image:
-        radial-gradient(circle, rgba(139,98,52,0.08) 2px, transparent 2px);
-      background-size: 40px 40px;
       pointer-events: none;
+      overflow: hidden;
+    }
+
+    .chip {
+      position: absolute;
+      opacity: 0.9;
     }
 
     /* Brand Logo Mark */
@@ -167,7 +169,7 @@
       font-family: 'Amatic SC', cursive;
       font-weight: 700;
       font-size: clamp(1.4rem, 4vw, 2rem);
-      color: var(--brown);
+      color: white;
       letter-spacing: 0.35em;
       text-transform: uppercase;
       display: block;
@@ -178,7 +180,7 @@
       font-family: 'Playfair Display', serif;
       font-weight: 900;
       font-size: clamp(4rem, 14vw, 9rem);
-      color: var(--brown);
+      color: white;
       line-height: 0.9;
       letter-spacing: -0.02em;
       display: block;
@@ -196,12 +198,12 @@
       flex: 1;
       max-width: 120px;
       height: 2px;
-      background: var(--brown);
+      background: white;
       border-radius: 2px;
     }
 
     .brand-cookie-icon {
-      color: var(--brown);
+      color: white;
       flex-shrink: 0;
     }
 
@@ -214,7 +216,7 @@
       padding: 0 8px;
       font-size: 0.7rem;
       letter-spacing: 0.22em;
-      color: var(--brown);
+      color: white;
       font-weight: 600;
       text-transform: uppercase;
       margin-top: 6px;
@@ -224,19 +226,33 @@
       font-family: 'Playfair Display', serif;
       font-style: italic;
       font-size: clamp(1.1rem, 3vw, 1.5rem);
-      color: var(--text-muted);
+      color: rgba(255,255,255,0.88);
       margin-bottom: 12px;
       max-width: 480px;
     }
 
     .hero-sub {
       font-size: 0.9rem;
-      color: var(--text-muted);
+      color: rgba(255,255,255,0.75);
       margin-bottom: 36px;
       letter-spacing: 0.05em;
     }
 
-    .hero-sub strong { color: var(--brown); }
+    .hero-sub strong { color: white; }
+
+    .hero-free-delivery {
+      margin-top: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 50px;
+      padding: 8px 20px;
+      font-size: 0.82rem;
+      color: white;
+      font-weight: 500;
+    }
 
     .btn-primary {
       background: var(--brown);
@@ -260,18 +276,8 @@
       box-shadow: 0 8px 24px rgba(139,98,52,0.4);
     }
 
-    .hero-free-delivery {
-      margin-top: 20px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(139,98,52,0.1);
-      border: 1px solid rgba(139,98,52,0.2);
-      border-radius: 50px;
-      padding: 8px 20px;
-      font-size: 0.82rem;
-      color: var(--brown-dark);
-      font-weight: 500;
+    /* old hero-free-delivery overridden above */
+    ._unused {
     }
 
     /* ── SECTION SHARED ── */
@@ -1219,19 +1225,45 @@
 
 <!-- HERO -->
 <section class="hero" aria-label="Hero">
+  <!-- Scattered chocolate chips background -->
+  <div class="hero-chips" aria-hidden="true">
+    <!-- top row -->
+    <svg class="chip" style="top:4%;left:3%;width:52px;transform:rotate(-20deg)" viewBox="0 0 60 50"><ellipse cx="30" cy="28" rx="26" ry="22" fill="#4A2810"/><ellipse cx="30" cy="26" rx="24" ry="20" fill="#5C3418"/><ellipse cx="22" cy="18" rx="8" ry="5" fill="#7A4A28" opacity="0.5"/><ellipse cx="30" cy="14" rx="18" ry="6" fill="#7A4A28" opacity="0.25"/></svg>
+    <svg class="chip" style="top:2%;left:20%;width:38px;transform:rotate(30deg)" viewBox="0 0 60 50"><ellipse cx="30" cy="28" rx="26" ry="22" fill="#4A2810"/><ellipse cx="30" cy="26" rx="24" ry="20" fill="#5C3418"/><ellipse cx="22" cy="18" rx="8" ry="5" fill="#7A4A28" opacity="0.5"/></svg>
+    <svg class="chip" style="top:1%;left:60%;width:44px;transform:rotate(-10deg)" viewBox="0 0 60 50"><ellipse cx="30" cy="28" rx="26" ry="22" fill="#3D2008"/><ellipse cx="30" cy="26" rx="24" ry="20" fill="#4E2C12"/><ellipse cx="22" cy="18" rx="8" ry="5" fill="#6A3C20" opacity="0.5"/><ellipse cx="30" cy="14" rx="18" ry="6" fill="#6A3C20" opacity="0.25"/></svg>
+    <svg class="chip" style="top:3%;left:80%;width:56px;transform:rotate(15deg)" viewBox="0 0 60 50"><ellipse cx="30" cy="28" rx="26" ry="22" fill="#4A2810"/><ellipse cx="30" cy="26" rx="24" ry="20" fill="#5C3418"/><ellipse cx="22" cy="18" rx="8" ry="5" fill="#7A4A28" opacity="0.5"/></svg>
+    <svg class="chip" style="top:6%;left:94%;width:40px;transform:rotate(-35deg)" viewBox="0 0 60 50"><ellipse cx="30" cy="28" rx="26" ry="22" fill="#3D2008"/><ellipse cx="30" cy="26" rx="24" ry="20" fill="#4E2C12"/><ellipse cx="22" cy="18" rx="8" ry="5" fill="#6A3C20" opacity="0.5"/></svg>
+    <!-- left side -->
+    <svg class="chip" style="top:22%;left:1%;width:48px;transform:rotate(10deg)" viewBox="0 0 60 50"><ellipse cx="30" cy="28" rx="26" ry="22" fill="#4A2810"/><ellipse cx="30" cy="26" rx="24" ry="20" fill="#5C3418"/><ellipse cx="22" cy="18" rx="8" ry="5" fill="#7A4A28" opacity="0.5"/><ellipse cx="30" cy="14" rx="18" ry="6" fill="#7A4A28" opacity="0.25"/></svg>
+    <svg class="chip" style="top:45%;left:0%;width:42px;transform:rotate(-25deg)" viewBox="0 0 60 50"><ellipse cx="30" cy="28" rx="26" ry="22" fill="#3D2008"/><ellipse cx="30" cy="26" rx="24" ry="20" fill="#4E2C12"/><ellipse cx="22" cy="18" rx="8" ry="5" fill="#6A3C20" opacity="0.5"/></svg>
+    <svg class="chip" style="top:68%;left:2%;width:50px;transform:rotate(18deg)" viewBox="0 0 60 50"><ellipse cx="30" cy="28" rx="26" ry="22" fill="#4A2810"/><ellipse cx="30" cy="26" rx="24" ry="20" fill="#5C3418"/><ellipse cx="22" cy="18" rx="8" ry="5" fill="#7A4A28" opacity="0.5"/><ellipse cx="30" cy="14" rx="18" ry="6" fill="#7A4A28" opacity="0.25"/></svg>
+    <!-- right side -->
+    <svg class="chip" style="top:20%;right:1%;width:46px;transform:rotate(-15deg)" viewBox="0 0 60 50"><ellipse cx="30" cy="28" rx="26" ry="22" fill="#3D2008"/><ellipse cx="30" cy="26" rx="24" ry="20" fill="#4E2C12"/><ellipse cx="22" cy="18" rx="8" ry="5" fill="#6A3C20" opacity="0.5"/><ellipse cx="30" cy="14" rx="18" ry="6" fill="#6A3C20" opacity="0.25"/></svg>
+    <svg class="chip" style="top:42%;right:0%;width:44px;transform:rotate(28deg)" viewBox="0 0 60 50"><ellipse cx="30" cy="28" rx="26" ry="22" fill="#4A2810"/><ellipse cx="30" cy="26" rx="24" ry="20" fill="#5C3418"/><ellipse cx="22" cy="18" rx="8" ry="5" fill="#7A4A28" opacity="0.5"/></svg>
+    <svg class="chip" style="top:65%;right:1%;width:52px;transform:rotate(-8deg)" viewBox="0 0 60 50"><ellipse cx="30" cy="28" rx="26" ry="22" fill="#3D2008"/><ellipse cx="30" cy="26" rx="24" ry="20" fill="#4E2C12"/><ellipse cx="22" cy="18" rx="8" ry="5" fill="#6A3C20" opacity="0.5"/><ellipse cx="30" cy="14" rx="18" ry="6" fill="#6A3C20" opacity="0.25"/></svg>
+    <!-- bottom row -->
+    <svg class="chip" style="bottom:3%;left:5%;width:50px;transform:rotate(22deg)" viewBox="0 0 60 50"><ellipse cx="30" cy="28" rx="26" ry="22" fill="#4A2810"/><ellipse cx="30" cy="26" rx="24" ry="20" fill="#5C3418"/><ellipse cx="22" cy="18" rx="8" ry="5" fill="#7A4A28" opacity="0.5"/></svg>
+    <svg class="chip" style="bottom:1%;left:28%;width:38px;transform:rotate(-18deg)" viewBox="0 0 60 50"><ellipse cx="30" cy="28" rx="26" ry="22" fill="#3D2008"/><ellipse cx="30" cy="26" rx="24" ry="20" fill="#4E2C12"/><ellipse cx="22" cy="18" rx="8" ry="5" fill="#6A3C20" opacity="0.5"/></svg>
+    <svg class="chip" style="bottom:2%;left:55%;width:46px;transform:rotate(12deg)" viewBox="0 0 60 50"><ellipse cx="30" cy="28" rx="26" ry="22" fill="#4A2810"/><ellipse cx="30" cy="26" rx="24" ry="20" fill="#5C3418"/><ellipse cx="22" cy="18" rx="8" ry="5" fill="#7A4A28" opacity="0.5"/><ellipse cx="30" cy="14" rx="18" ry="6" fill="#7A4A28" opacity="0.25"/></svg>
+    <svg class="chip" style="bottom:4%;left:78%;width:42px;transform:rotate(-30deg)" viewBox="0 0 60 50"><ellipse cx="30" cy="28" rx="26" ry="22" fill="#3D2008"/><ellipse cx="30" cy="26" rx="24" ry="20" fill="#4E2C12"/><ellipse cx="22" cy="18" rx="8" ry="5" fill="#6A3C20" opacity="0.5"/></svg>
+    <!-- mid scattered -->
+    <svg class="chip" style="top:30%;left:8%;width:36px;transform:rotate(40deg)" viewBox="0 0 60 50"><ellipse cx="30" cy="28" rx="26" ry="22" fill="#4A2810"/><ellipse cx="30" cy="26" rx="24" ry="20" fill="#5C3418"/><ellipse cx="22" cy="18" rx="8" ry="5" fill="#7A4A28" opacity="0.5"/></svg>
+    <svg class="chip" style="top:55%;left:88%;width:36px;transform:rotate(-22deg)" viewBox="0 0 60 50"><ellipse cx="30" cy="28" rx="26" ry="22" fill="#3D2008"/><ellipse cx="30" cy="26" rx="24" ry="20" fill="#4E2C12"/><ellipse cx="22" cy="18" rx="8" ry="5" fill="#6A3C20" opacity="0.5"/></svg>
+  </div>
+
   <div class="brand-logo-mark" role="img" aria-label="Emergency Cookies logo">
     <span class="brand-arc">Emergency</span>
     <span class="brand-main">Cookies</span>
     <div class="brand-divider">
       <div class="brand-divider-line"></div>
       <svg class="brand-cookie-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-        <circle cx="18" cy="18" r="16" stroke="#8B6234" stroke-width="2"/>
-        <circle cx="13" cy="14" r="2" fill="#8B6234"/>
-        <circle cx="20" cy="12" r="1.5" fill="#8B6234"/>
-        <circle cx="22" cy="21" r="2" fill="#8B6234"/>
-        <circle cx="14" cy="22" r="1.5" fill="#8B6234"/>
-        <circle cx="18" cy="17" r="1.5" fill="#8B6234"/>
-        <path d="M22 8 Q24 6 26 8" stroke="#8B6234" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <circle cx="18" cy="18" r="16" stroke="white" stroke-width="2"/>
+        <circle cx="13" cy="14" r="2" fill="white"/>
+        <circle cx="20" cy="12" r="1.5" fill="white"/>
+        <circle cx="22" cy="21" r="2" fill="white"/>
+        <circle cx="14" cy="22" r="1.5" fill="white"/>
+        <circle cx="18" cy="17" r="1.5" fill="white"/>
+        <path d="M22 8 Q24 6 26 8" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/>
       </svg>
       <div class="brand-divider-line"></div>
     </div>
