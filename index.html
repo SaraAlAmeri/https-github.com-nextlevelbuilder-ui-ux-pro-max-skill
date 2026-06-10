@@ -1269,7 +1269,7 @@
     </div>
     <div class="brand-meta">
       <span>EST.</span>
-      <span>2024</span>
+      <span>2026</span>
     </div>
   </div>
 
@@ -1352,7 +1352,7 @@
           <circle cx="42" cy="42" r="4" fill="rgba(245,237,216,0.6)"/>
         </svg>
         <h3>Made with love</h3>
-        <p>Abu Dhabi, 2024</p>
+        <p>Abu Dhabi, 2026</p>
       </div>
     </div>
     <div class="story-text">
@@ -1360,7 +1360,7 @@
       <h2 class="section-title" id="story-title">Born in an Abu Dhabi Kitchen</h2>
       <p class="story-quote">"Real butter. Real chocolate. Real love. No shortcuts."</p>
       <p class="story-body">
-        Emergency Cookies started in 2024 with a simple obsession: the perfect cookie. Not the kind from a factory. The kind that fills your home with that warm, buttery smell and comes out of the oven with crispy edges and a gooey, chocolate-pooled centre.
+        Emergency Cookies started in 2026 with a simple obsession: the perfect cookie. Not the kind from a factory. The kind that fills your home with that warm, buttery smell and comes out of the oven with crispy edges and a gooey, chocolate-pooled centre.
       </p>
       <p class="story-body">
         We make every batch by hand in Abu Dhabi, freeze them at their peak, and deliver them to your door across all UAE. All you need to do is bake. 12 minutes and you're done. That's the emergency plan.
@@ -1432,7 +1432,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2024 Emergency Cookies. All rights reserved. Abu Dhabi, UAE.</span>
+    <span>© 2026 Emergency Cookies. All rights reserved. Abu Dhabi, UAE.</span>
     <span>Handmade with real butter &amp; real love.</span>
   </div>
 </footer>
@@ -1624,8 +1624,8 @@
       a: 'All our cookies contain Gluten (wheat flour), Eggs, and Dairy (butter). Our White Chocolate Macadamia flavour also contains Tree Nuts (macadamia). All cookies are made in a home kitchen that handles these allergens. Not suitable for those with severe nut allergies.',
     },
     {
-      q: 'What is the difference between "Frozen Dough" and "Baked & Frozen"?',
-      a: '"Frozen Dough" are raw, pre-portioned cookie dough balls that you bake at home. "Baked & Frozen" are fully baked cookies that we freeze at their peak — you can warm them in the oven at 160°C for 5 minutes or enjoy them at room temperature. Both options are the same price.',
+      q: 'What exactly do I receive when I order?',
+      a: 'You receive a pack of 12 pre-portioned frozen cookie dough balls, ready to go straight from your freezer into the oven. No thawing needed — just preheat, bake 12–14 minutes, and enjoy fresh-from-the-oven cookies at home.',
     },
     {
       q: 'How long does it take to receive my order?',
@@ -1662,11 +1662,7 @@
         <div class="card-body">
           <h3 class="card-name">${p.name}</h3>
           <p class="card-desc">${p.desc}</p>
-          <p class="card-allergen">${p.allergens} · 12 cookies · 400g</p>
-          <div class="card-type-toggle" role="group" aria-label="Select cookie type">
-            <button class="toggle-btn active" onclick="setType('${p.id}','frozen',this)" aria-pressed="true">Frozen Dough</button>
-            <button class="toggle-btn" onclick="setType('${p.id}','baked',this)" aria-pressed="false">Baked &amp; Frozen</button>
-          </div>
+          <p class="card-allergen">${p.allergens} · 12 cookies · 400g · Delivered Frozen</p>
           <div class="card-footer">
             <div>
               <div class="card-price">${p.price} <span>AED / pack</span></div>
@@ -1795,7 +1791,7 @@
         <div class="cart-item-color" style="background:${item.product.visualColor}" aria-hidden="true"></div>
         <div class="cart-item-info">
           <div class="cart-item-name">${item.product.name}</div>
-          <div class="cart-item-type">${item.type === 'frozen' ? 'Frozen Dough' : 'Baked & Frozen'} · ${item.product.price} AED/pack</div>
+          <div class="cart-item-type">Frozen Dough · ${item.product.price} AED/pack</div>
           <div class="cart-item-controls">
             <button class="cart-qty-btn" onclick="cartAdjust('${item.key}',-1)" aria-label="Decrease quantity">−</button>
             <span class="cart-item-qty" aria-live="polite">${item.qty}</span>
@@ -1888,7 +1884,7 @@
     const total = getTotal();
     const rows = cart.map(i => `
       <div class="summary-row">
-        <span>${i.product.name} × ${i.qty} (${i.type === 'frozen' ? 'Frozen Dough' : 'Baked & Frozen'})</span>
+        <span>${i.product.name} × ${i.qty}</span>
         <span>${i.product.price * i.qty} AED</span>
       </div>
     `).join('');
