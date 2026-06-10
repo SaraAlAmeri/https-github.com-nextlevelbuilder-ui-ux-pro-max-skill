@@ -7,7 +7,7 @@
   <meta name="description" content="Premium frozen cookie dough, handcrafted in Abu Dhabi. Delivered frozen across UAE. Bake fresh at home in 12 minutes." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Inter:wght@300;400;500;600&family=Amatic+SC:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -39,7 +39,7 @@
       overflow-x: hidden;
     }
 
-    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+    h1, h2, h3 { font-family: 'Montserrat', sans-serif; font-weight: 800; }
 
     /* ── NAV ── */
     nav {
@@ -57,9 +57,11 @@
     }
 
     .nav-logo {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Montserrat', sans-serif;
       font-weight: 900;
-      font-size: 1.25rem;
+      font-size: 1.1rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
       color: var(--brown);
       letter-spacing: 0.04em;
       text-decoration: none;
@@ -133,7 +135,7 @@
 
     /* ── HERO ── */
     .hero {
-      background: var(--cream);
+      background: #A0673A;
       min-height: 92vh;
       display: flex;
       flex-direction: column;
@@ -145,15 +147,24 @@
       text-align: center;
     }
 
-    /* Decorative dots */
+    /* floating choc chip dots */
     .hero::before {
       content: '';
       position: absolute;
       inset: 0;
       background-image:
-        radial-gradient(circle, rgba(139,98,52,0.08) 2px, transparent 2px);
-      background-size: 40px 40px;
+        radial-gradient(ellipse 18px 14px at 8% 12%, #7A4E28 100%, transparent 100%),
+        radial-gradient(ellipse 14px 10px at 92% 8%, #7A4E28 100%, transparent 100%),
+        radial-gradient(ellipse 16px 12px at 18% 82%, #7A4E28 100%, transparent 100%),
+        radial-gradient(ellipse 20px 15px at 82% 78%, #7A4E28 100%, transparent 100%),
+        radial-gradient(ellipse 12px 9px at 5% 48%, #7A4E28 100%, transparent 100%),
+        radial-gradient(ellipse 15px 11px at 95% 52%, #7A4E28 100%, transparent 100%),
+        radial-gradient(ellipse 13px 10px at 35% 6%, #7A4E28 100%, transparent 100%),
+        radial-gradient(ellipse 16px 12px at 65% 92%, #7A4E28 100%, transparent 100%),
+        radial-gradient(ellipse 11px 8px at 72% 18%, #7A4E28 100%, transparent 100%),
+        radial-gradient(ellipse 14px 10px at 28% 88%, #7A4E28 100%, transparent 100%);
       pointer-events: none;
+      opacity: 0.55;
     }
 
     /* Brand Logo Mark */
@@ -164,23 +175,24 @@
     }
 
     .brand-arc {
-      font-family: 'Amatic SC', cursive;
-      font-weight: 700;
-      font-size: clamp(1.4rem, 4vw, 2rem);
-      color: var(--brown);
-      letter-spacing: 0.35em;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: clamp(1rem, 3vw, 1.4rem);
+      color: white;
+      letter-spacing: 0.45em;
       text-transform: uppercase;
       display: block;
-      margin-bottom: -8px;
+      margin-bottom: -4px;
     }
 
     .brand-main {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Montserrat', sans-serif;
       font-weight: 900;
-      font-size: clamp(4rem, 14vw, 9rem);
-      color: var(--brown);
-      line-height: 0.9;
-      letter-spacing: -0.02em;
+      font-size: clamp(4.5rem, 15vw, 10rem);
+      color: white;
+      line-height: 0.88;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
       display: block;
     }
 
@@ -196,12 +208,12 @@
       flex: 1;
       max-width: 120px;
       height: 2px;
-      background: var(--brown);
+      background: white;
       border-radius: 2px;
     }
 
     .brand-cookie-icon {
-      color: var(--brown);
+      color: white;
       flex-shrink: 0;
     }
 
@@ -214,29 +226,30 @@
       padding: 0 8px;
       font-size: 0.7rem;
       letter-spacing: 0.22em;
-      color: var(--brown);
+      color: white;
       font-weight: 600;
       text-transform: uppercase;
       margin-top: 6px;
     }
 
     .hero-tagline {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Montserrat', sans-serif;
       font-style: italic;
-      font-size: clamp(1.1rem, 3vw, 1.5rem);
-      color: var(--text-muted);
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      color: rgba(255,255,255,0.85);
       margin-bottom: 12px;
       max-width: 480px;
+      font-weight: 500;
     }
 
     .hero-sub {
       font-size: 0.9rem;
-      color: var(--text-muted);
+      color: rgba(255,255,255,0.75);
       margin-bottom: 36px;
       letter-spacing: 0.05em;
     }
 
-    .hero-sub strong { color: var(--brown); }
+    .hero-sub strong { color: white; }
 
     .btn-primary {
       background: var(--brown);
@@ -265,12 +278,12 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(139,98,52,0.1);
-      border: 1px solid rgba(139,98,52,0.2);
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.35);
       border-radius: 50px;
       padding: 8px 20px;
       font-size: 0.82rem;
-      color: var(--brown-dark);
+      color: white;
       font-weight: 500;
     }
 
@@ -350,7 +363,7 @@
     }
 
     .step-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 1.2rem;
       color: var(--cream);
       margin-bottom: 10px;
@@ -445,7 +458,7 @@
     .card-body { padding: 22px 22px 24px; flex: 1; display: flex; flex-direction: column; }
 
     .card-name {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 1.3rem;
       font-weight: 800;
       margin-bottom: 6px;
@@ -501,7 +514,7 @@
     }
 
     .card-price {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 1.5rem;
       font-weight: 800;
       color: var(--brown);
@@ -589,7 +602,7 @@
     .story-text { }
 
     .story-quote {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: clamp(1.4rem, 3vw, 1.9rem);
       font-style: italic;
       color: var(--text-main);
@@ -612,7 +625,7 @@
 
     .stat { text-align: center; }
     .stat-num {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 2rem;
       font-weight: 800;
       color: var(--brown);
@@ -635,7 +648,7 @@
       border: none;
       text-align: left;
       padding: 22px 0;
-      font-family: 'Playfair Display', serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 1.05rem;
       color: var(--text-main);
       cursor: pointer;
@@ -684,7 +697,7 @@
     }
 
     .footer-brand-name {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 1.5rem;
       font-weight: 900;
       color: var(--cream);
@@ -710,7 +723,7 @@
     .footer-contact-item:hover { color: var(--cream); }
 
     .footer-col-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 1rem;
       font-weight: 700;
       color: var(--cream);
@@ -778,7 +791,7 @@
     }
 
     .cart-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 1.3rem;
       font-weight: 800;
       color: var(--text-main);
@@ -981,7 +994,7 @@
     }
 
     .modal-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 1.6rem;
       font-weight: 800;
       margin-bottom: 6px;
@@ -1101,7 +1114,7 @@
     }
 
     .confirm-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 1.8rem;
       font-weight: 800;
       color: var(--text-main);
@@ -1321,13 +1334,13 @@
     <div class="brand-divider">
       <div class="brand-divider-line"></div>
       <svg class="brand-cookie-icon" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-        <circle cx="18" cy="18" r="16" stroke="#8B6234" stroke-width="2"/>
-        <circle cx="13" cy="14" r="2" fill="#8B6234"/>
-        <circle cx="20" cy="12" r="1.5" fill="#8B6234"/>
-        <circle cx="22" cy="21" r="2" fill="#8B6234"/>
-        <circle cx="14" cy="22" r="1.5" fill="#8B6234"/>
-        <circle cx="18" cy="17" r="1.5" fill="#8B6234"/>
-        <path d="M22 8 Q24 6 26 8" stroke="#8B6234" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <circle cx="18" cy="18" r="16" stroke="white" stroke-width="2"/>
+        <circle cx="13" cy="14" r="2" fill="white"/>
+        <circle cx="20" cy="12" r="1.5" fill="white"/>
+        <circle cx="22" cy="21" r="2" fill="white"/>
+        <circle cx="14" cy="22" r="1.5" fill="white"/>
+        <circle cx="18" cy="17" r="1.5" fill="white"/>
+        <path d="M22 8 Q24 6 26 8" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/>
       </svg>
       <div class="brand-divider-line"></div>
     </div>
